@@ -1,0 +1,770 @@
+\documentclass[12pt,UTF8]{ctexart}
+\usepackage{ctex,amsmath,amssymb,geometry,fancyhdr,bm,amsfonts,mathtools,extarrows,graphicx,url,enumerate,color,float,multicol} 
+\usepackage{subfigure}
+\allowdisplaybreaks[4]
+% 加入中文支持
+\newcommand\Set[2]{\left\{#1\ \middle\vert\ #2 \right\}}
+\newcommand\Lim[0]{\lim\limits_{n\rightarrow\infty}}
+\newcommand\LIM[2]{\lim\limits_{#1\rightarrow#2}}
+\newcommand\Ser[1]{\sum_{n=#1}^\infty}
+\newcommand{\SER}[2]{\sum_{#1=#2}^\infty}
+\newcommand{\Int}[4]{\int_{#1}^{#2}#3\mathrm d#4}
+\geometry{a4paper,scale=0.80}
+\pagestyle{fancy}
+\rhead{习题10.6\&补充题\&习题11.1\&11.2}
+\lhead{基础习题课讲义}
+\chead{微积分B(2)}
+\begin{document}
+\setcounter{section}{15}
+\section{泰勒公式、几何应用}
+\noindent
+\subsection{知识结构}
+\noindent第10章多元函数微分学
+	\begin{enumerate}
+		\item[10.6]二元函数的泰勒公式
+		\begin{enumerate}
+			\item[10.6.1]二元函数的微分中值定理
+			\item[10.6.2]二元函数的泰勒公式
+		\end{enumerate}
+	\end{enumerate}
+第11章多元函数微分学的应用
+	\begin{enumerate}
+		\item[11.1]向量值函数的导数和积分
+		\begin{enumerate}
+			\item[11.1.1]向量值函数
+			\item[11.1.2]向量值函数的导数
+			\item[11.1.3]向量值函数的积分
+		\end{enumerate}
+		\item[11.2]空间曲面的切平面与法向量
+		\begin{enumerate}
+			\item[11.2.1]曲面$z=z(x,y)$的切平面
+			\item[11.2.2]一般方程下曲面的切平面
+			\item[11.2.3]一般方程下空间曲线的切线
+			\item[11.2.4]参数方程下曲面的切平面
+		\end{enumerate}
+	\end{enumerate}
+\subsection{习题10.6解答}
+\begin{enumerate}
+\item写出$f(x,y)=x^y$在点$(1,1)$带佩亚诺余项的三阶泰勒公式，由此计算$1.1^{1.02}$.
+
+解：$f(1,1)=1$,
+
+$\frac{\partial f}{\partial x}=yx^{y-1},\frac{\partial f}{\partial y}=x^y\ln x$,
+
+$\frac{\partial^2f}{\partial x^2}=y(y-1)x^{y-2},\frac{\partial^2f}{\partial x\partial y}=x^{y-1}+yx^{y-1}\ln x,\frac{\partial^2f}{\partial y^2}=x^y(\ln x)^2$,
+
+$\frac{\partial^3f}{\partial x^3}=y(y-1)(y-2)x^{y-3},\frac{\partial^3f}{\partial x\partial y^2}=yx^{y-1}(\ln x)^2,\\
+\frac{\partial^3}{\partial y\partial x^2}=(2y-1)x^{y-2}+y(y-1)x^{y-2}\ln x=[(2y-1)+y(y-1)\ln x]x^{y-2},\\
+\frac{\partial^3f}{\partial y^3}=x^y(\ln x)^3$,
+
+$\therefore$
+\[\begin{split}
+&f(x,y)\\
+=&f(1,1)+[\frac{\partial f(1,1)}{\partial x}(x-1)+\frac{\partial f(1,1)}{\partial y}(y-1)]\\
+&+\frac12[\frac{\partial^2f(1,1)}{\partial x^2}(x-1)^2+2\frac{\partial^2f(1,1)}{\partial x\partial y}(x-1)(y-1)+\frac{\partial^2f(1,1)}{\partial y^2}(y-1)^2]\\
+&+\frac16[\frac{\partial^3f(1,1)}{\partial x^3}(x-1)^3+3\frac{\partial^3f(1,1)}{\partial x\partial y^2}(x-1)(y-1)^2+3\frac{\partial^3f(1,1)}{\partial y\partial x^2}(x-1)^2(y-1)\\
+&\hspace{7cm}+\frac{\partial^3f(1,1)}{\partial y^3}(y-1)^3]+o[(\sqrt{(x-1)^2+(y-1)^2})^3]\\
+=&1+(x-1)+\frac12[2(x-1)(y-1)]+\frac16[3(x-1)^2(y-1)]+o[(\sqrt{(x-1)^2+(y-1)^2})^3]\\
+=&x+(x-1)(y-1)+\frac12(x-1)^2(y-1)+o[(\sqrt{(x-1)^2+(y-1)^2})^3]
+\end{split}\]
+
+$\therefore1.1^{1.02}=f(1.1,1.02)\approx1+0.1+0.1\times0.02+\frac12\times0.1^2\times0.02=1.1021$.
+
+\item证明当$|x|,|y|$充分小时，有$\frac{\cos x}{\cos y}\approx1-\frac12(x^2-y^2)$.
+
+证明：记$f(x,y)=\frac{\cos x}{\cos y}$,
+
+$f(0,0)=1$,
+\begin{flalign*}
+&\frac{\partial f}{\partial x}=-\frac{\sin x}{\cos y},\frac{\partial f}{\partial y}=\frac{\cos x\sin y}{\cos^2y},\\
+&\frac{\partial^2f}{\partial x^2}=-\frac{\cos x}{\cos y},\frac{\partial^2f}{\partial x\partial y}=-\frac{\sin x\sin y}{\cos^2y},\\
+&\frac{\partial^2f}{\partial y^2}=\frac{\cos x\cos y\cos^2y+\cos x\sin y2\cos y\sin y}{\cos^4y}=\frac{\cos x\cos^2y+2\cos x\sin^2y}{\cos^3y},&
+\end{flalign*}
+$\therefore$
+\[\begin{split}
+f(x,y)=&f(0,0)+[\frac{\partial f(0,0)}{\partial x}x+\frac{\partial f(0,0)}{\partial y}y]+\frac12[\frac{\partial^2f(0,0)}{\partial x^2}x^2+2\frac{\partial^2f(0,0)}{\partial x\partial y}xy+\frac{\partial^2f(0,0)}{\partial y^2}y^2]\\
+&+o[(\sqrt{x^2+y^2})^2]\\
+=&1+(0+0)+\frac12(-x^2+0+y^2)+o[(\sqrt{x^2+y^2})^2]\\
+=&1-\frac12(x^2-y^2)+o[(\sqrt{x^2+y^2})^2],
+\end{split}\]
+$\therefore$当$|x|,|y|$充分小时，有$\frac{\cos x}{\cos y}\approx1-\frac12(x^2-y^2)$.
+
+\item写出$f(x,y)=\sqrt{1+y^2}\cos x$在点$(0,1)$的一阶泰勒多项式及拉格朗日余项.
+
+解：$f(0,1)=\sqrt2$,
+\begin{flalign*}
+&\frac{\partial f}{\partial x}=-\sqrt{1+y^2}\sin x,\frac{\partial f}{\partial y}=\frac{2y\cos x}{2\sqrt{1+y^2}}=\frac{y\cos x}{\sqrt{1+y^2}},\\
+&\frac{\partial^2f}{\partial x^2}=-\sqrt{1+y^2}\cos x,\frac{\partial^2f}{\partial x\partial y}=\frac{-2y\sin x}{2\sqrt{1+y^2}}=\frac{-y\sin x}{\sqrt{1+y^2}},\\
+&\frac{\partial^2f}{\partial y^2}=\frac{\cos x\sqrt{1+y^2}-y\cos x\frac{2y}{2\sqrt{1+y^2}}}{1+y^2}=\frac{\cos x}{(1+y^2)^{\frac32}},&
+\end{flalign*}
+$\therefore$
+\[\begin{split}
+f(x,y)=&f(0,1)+[\frac{\partial f(0,1)}{\partial x}x+\frac{\partial f}{\partial y}(y-1)]\\
+&+\frac12[\frac{\partial^2f(\theta x,1+\theta(y-1))}{\partial x^2}x^2+2\frac{\partial^2f(\theta x,1+\theta(y-1))}{\partial x\partial y}x(y-1)\\
+&\hspace{7cm}+\frac{\partial^2f(\theta x,1+\theta(y-1))}{\partial y^2}(y-1)^2]\\
+=&\sqrt2+\frac{\sqrt2}2(y-1)\\
+&+\frac12\Big(-\sqrt{1+[1+\theta(y-1)]^2}\cos(\theta x)x^2-\frac{2[1+\theta(y-1)]\sin\theta x}{\sqrt{1+[1+\theta(y-1)]^2}}x(y-1)\\
+&\hspace{7cm}+\frac{\cos\theta x}{\{1+[1+\theta(y-1)]^2\}^{\frac32}}(y-1)^2\Big)\\
+=&\sqrt2+\frac{\sqrt2}2(y-1)\\
+&+\frac12\Big\{-x^2\sqrt{1+(1+\theta(y-1))^2}\cos\theta x-2x(y-1)\frac{1+\theta(y-1)}{\sqrt{1+(1+\theta(y-1))^2}}\sin\theta x\\
+&\hspace{6cm}+(y-1)^2\frac{\cos\theta x}{\{1+(1+\theta(y-1))^2\}^{\frac32}}\Big\},0<\theta<1.
+\end{split}\]
+\end{enumerate}
+\subsection{第10章补充题}
+\begin{enumerate}
+\item设$f(x,y)$是定义在整个平面上的连续函数，当$x^2+y^2\rightarrow+\infty$时，$f(x,y)\rightarrow+\infty$. 求证存在$(x_0,y_0)$，使
+\[
+f(x_0,y_0)=\min\Set{f(x,y)}{(x,y)\in\mathbb R^2}.
+\]
+证明：$\because$当$x^2+y^2\rightarrow+\infty$时，$f(x,y)\rightarrow+\infty$,
+
+$\therefore$对于$f(0,0),\exists N>0,s.t.f(x,y)>f(0,0),x^2+y^2>N^2$,
+
+$\because$在有界闭区域$D=\Set{(x,y)}{x^2+y^2\leq N^2}$内部$f(x,y)$连续，
+
+$\therefore\exists(x_0,y_0)\in D,s.t.f(x_0,y_0)\leq f(x,y),(x,y)\in D$，此时$f(x_0,y_0)\leq f(0,0)$，
+
+$\therefore f(x_0,y_0)\leq f(0,0)<f(x,y),x^2+y^2>N^2$,
+
+$\therefore f(x_0,y_0)\leq f(x,y),(x,y)\in\mathbb R^2$,
+
+$\therefore$存在$(x_0,y_0)$，使$f(x_0,y_0)=\min\Set{f(x,y)}{(x,y)\in\mathbb R^2}$.
+\item设$f(x,y)$是定义在整个平面上的连续函数，$f(0,0)=0$，且当$(x,y)\neq(0,0)$时，$f(x,y)>0$，又设对于任意的$(x,y)$和任意实数$c$，都有
+\[
+f(cx,cy)=c^2f(x,y).
+\]
+求证存在正数$a,b$，使得对于任意的$(x,y)$，都有
+\[
+a(x^2+y^2)\leq f(x,y)\leq b(x^2+y^2).
+\]
+证明：$\because f(x,y)$是定义在整个平面上的连续函数，
+
+$\therefore f(x,y)$在有界闭区域$D=\Set{(x,y)}{0.5<x^2+y^2\leq 1.5}$上连续，
+
+$\because$当$(x,y)\neq(0,0)$时，$f(x,y)>0$，
+
+$\therefore\exists b\geq a>0,s.t.a\leq f(x,y)\leq b,(x,y)\in D$,
+
+$\therefore$当$(x,y)\in D^*=\Set{(x,y)}{x^2+y^2=1}\subset D$时，$a\leq f(x,y)\leq b$,
+
+$\because f(x,y)=f(\sqrt{x^2+y^2}\frac x{\sqrt{x^2+y^2}},\sqrt{x^2+y^2}\frac y{x^2+y^2})=(x^2+y^2)f(\frac x{\sqrt{x^2+y^2}},\frac y{\sqrt{x^2+y^2}})$,
+
+又$\because a\leq f(\frac x{\sqrt{x^2+y^2}},\frac y{\sqrt{x^2+y^2}})\leq b$,
+
+$\therefore a(x^2+y^2)\leq f(x,y)\leq b(x^2+y^2)$.
+
+\item若对于任意实数$t$，函数$f(x,y,z)$满足$f(tx,ty,tz)=t^kf(x,y,z)$，则称$f(x,y,z)$为$k$次齐次函数. 试证$k$次齐次函数$f(x,y,z)$满足方程
+\[
+x\frac{\partial f}{\partial x}+y\frac{\partial f}{\partial y}+z\frac{\partial f}{\partial z}=kf(x,y,z).
+\]
+证明：方法1：等式$f(tx,ty,tz)=t^kf(x,y,z)$两边分别对$t$求偏导\footnotemark\footnotetext{这里应是偏导。}得
+\[
+x\frac{\partial f(tx,ty,tz)}{\partial x}+y\frac{\partial f(tx,ty,tz)}{\partial y}+z\frac{\partial f(tx,ty,tz)}{\partial z}=kt^{k-1}f(x,y,z),
+\]
+令$t=1$得
+\[
+x\frac{\partial f}{\partial x}+y\frac{\partial f}{\partial y}+z\frac{\partial f}{\partial z}=kf(x,y,z).
+\]
+
+方法2：$\because f(tx,ty,tz)=t^kf(x,y,z)$,
+
+$\therefore$
+\begin{subequations}
+\begin{align}
+\frac{\partial f(x,y,z)}{\partial x}=\frac{\partial}{\partial x}\frac{f(tx,ty,tz)}{t^k}=\frac1{t^k}\frac{\partial f(tx,ty,tz)}{\partial x}t=\frac1{t^{k-1}}\frac{\partial f(tx,ty,tz)}{\partial x},\label{3a}\\
+\frac{\partial f(x,y,z)}{\partial y}=\frac{\partial}{\partial y}\frac{f(tx,ty,tz)}{t^k}=\frac1{t^k}\frac{\partial f(tx,ty,tz)}{\partial y}t=\frac1{t^{k-1}}\frac{\partial f(tx,ty,tz)}{\partial y},\label{3b}\\
+\frac{\partial f(x,y,z)}{\partial z}=\frac{\partial}{\partial z}\frac{f(tx,ty,tz)}{t^k}=\frac1{t^k}\frac{\partial f(tx,ty,tz)}{\partial z}t=\frac1{t^{k-1}}\frac{\partial f(tx,ty,tz)}{\partial z},\label{3c}
+\end{align}
+\end{subequations}
+方程$f(tx,ty,tz)=t^kf(x,y,z)$两边分别对$t$求导
+\[
+x\frac{\partial f(tx,ty,tz)}{\partial x}+y\frac{\partial f(tx,ty,tz)}{\partial y}+z\frac{\partial f(tx,ty,tz)}{\partial z}=kt^{k-1}f(x,y,z),
+\]
+将式~(\ref{3a})-(\ref{3c})代入上式
+\[
+xt^{k-1}\frac{\partial f(x,y,z)}{\partial x}+yt^{k-1}\frac{\partial f(x,y,z)}{\partial y}+zt^{k-1}\frac{\partial f(x,y,z)}{\partial z}=kt^{k-1}f(x,y,z),
+\]
+即
+\[
+x\frac{\partial f}{\partial x}+y\frac{\partial f}{\partial y}+z\frac{\partial f}{\partial z}=kf(x,y,z).
+\]
+\item设$F$为三元可微函数，$u=u(x,y,z)$是由方程$F(u^2-x^2,u^2-y^2,u^2-z^2)=0$确定的隐函数. 求证
+\[
+\frac{u'_x}{x}+\frac{u'_y}{y}+\frac{u'_z}{z}=\frac1u.
+\]
+证明：方程$F(u^2-x^2,u^2-y^2,u^2-z^2)=0$两边分别对$x$求偏导
+\[
+F'_1(2u\frac{\partial u}{\partial x}-2x)+F'_22u\frac{\partial u}{\partial x}+F'_32u\frac{\partial u}{\partial x}=0
+\]
+得
+\[
+\frac{\partial u}{\partial x}=\frac{xF'_1}{u(F'_1+F'_2+F'_3)}
+\]
+同理
+\[\begin{split}
+\frac{\partial u}{\partial y}=\frac{yF'_2}{u(F'_1+F'_2+F'_3)},\\
+\frac{\partial u}{\partial z}=\frac{zF'_3}{u(F'_1+F'_2+F'_3)},
+\end{split}\]
+$\therefore$
+\[
+\frac{u'_x}{x}+\frac{u'_y}{y}+\frac{u'_z}{z}=\frac{F'_1+F'_2+F'_3}{u(F'_1+F'_2+F'_3)}=\frac1u.
+\]
+\item求方程$\frac{\partial^2z}{\partial x\partial y}=x+y$满足条件$z(x,0)=x,z(0,y)=y^2$的解$z(z,y)$.
+
+解：方法1：$\because\frac{\partial^2z}{\partial x\partial y}=x+y$,
+
+$\therefore\frac{\partial z}{\partial y}=\int_0^x(x+y)\mathrm dx+\varphi_0(y)=\frac{x^2}2+xy+\varphi_0(y)$,
+
+$\because z(0,y)=y^2$,
+
+$\therefore\frac{z(0,y)}{\partial y}=2y=\varphi_0(y)$,
+
+$\therefore z(x,y)=\int_0^y[\frac{x^2}2+xy+2y]\mathrm dy+\psi(x)=\frac12x^2y+\frac12xy^2+y^2+\psi(x)$,
+
+$\because z(x,0)=x=\psi(x)$,
+
+$\therefore z(x,y)=\frac12x^2y+\frac12xy^2+y^2+x$.
+
+方法2：$\because\frac{\partial^2z}{\partial x\partial y}=x+y$,
+
+$\therefore\int\frac{\partial^2z}{\partial x\partial y}\mathrm dx=\int(x+y)\mathrm dx=\frac12x^2+xy+C_1(y)=\frac{\partial z}{\partial y}+C_1(y)$,
+
+$\therefore$可设$\frac{\partial z}{\partial y}=\frac12x^2+xy+C(y)$，其中$C(y)$是与$x$无关的$y$的函数，
+
+$\because z(0,y)=y^2$,
+
+$\therefore\frac{\partial z(0,y)}{\partial y}=2y=C(y)$,
+
+$\therefore\frac{\partial z}{\partial y}=\frac12x^2+xy+2y$,
+
+$\therefore\int\frac{\partial z}{\partial y}\mathrm dy=\int(\frac12x^2+xy+2y)\mathrm dy=\frac12x^2y+\frac12xy^2+y^2+C_3(x)=z(x,y)+C_4(x)$,
+
+$\therefore$可设$z(x,y)=\int(\frac12x^2+xy+2y)\mathrm dy+C^*(x)=\frac12x^2y+\frac12xy^2+y^2+C^*(x)$，其中$C^*(x)$是与$y$无关的$x$的函数，
+
+$\because z(x,0)=x=C^*(x)$,
+
+$\therefore z(x,y)=\frac12x^2y+\frac12xy^2+y^2+x$.
+
+方法3：$\because\frac{\partial^2z}{\partial x\partial y}=x+y$,
+
+$\therefore\int\frac{\partial^2z}{\partial x\partial y}\mathrm dx=\int(x+y)\mathrm dx=\frac12x^2+xy+C_1(y)=\frac{\partial z}{\partial y}+C_2(y)$,
+
+$\therefore$可设$\frac{\partial z}{\partial y}=\frac12x^2+xy+C(y)$，其中$C(y)$是与$x$无关的$y$的函数，
+
+$\therefore\int\frac{\partial z}{\partial y}\mathrm dy=\frac12x^2y+\frac12xy^2+\int C(y)\mathrm dy=z(x,y)+C_3(x)$,
+
+$\therefore$可设$z(x,y)=\frac12x^2y+\frac12xy^2+F(y)+C^*(x)$，其中$F(y)$是$C(y)$的一个与$x$无关的原函数，$C^*(x)$是与$y$无关的$x$的函数，
+
+$\because z(0,y)=y^2,z(x,0)=x$,
+
+$\therefore F(y)+C^*(0)=y^2,F(0)+C^*(x)=x$,
+
+$\therefore F(y)=y^2-C^*(0),C^*(x)=x-F(0)$，且$F(0)+C^*(0)=0$,
+
+$\therefore z(x,y)=\frac12x^2y+\frac12xy^2+y^2+x-[F(0)+C^*(0)]=\frac12x^2y+\frac12xy^2+y^2+x$.
+\item设$z=f(x,y)$处处可微，$a,b$不全等于零. 求证满足方程$bz'_x=az'_y$的充分条件是存在一元函数$g(u)$，使得$z=f(x,y)=g(ax+by)$.
+
+证明：$\because$存在一元函数$g(u)$，使得$z=f(x,y)=g(ax+by)$,
+
+$\therefore$对于任意常数$C$，$z$在直线$ax+by=C$上恒等于常数，
+
+$\therefore z=f(x,y)$在直线$ax+by=C$上任意一点处沿该直线方向的方向导数均等于零，\footnotemark\footnotetext{这里之前的版本中是“$\therefore z$在该直线方向的方向导数恒等于零，”，不准确。}
+
+由$a,b$不全为零知直线$ax+by=C$的方向向量可表示为$(-b,a)$，\footnotemark\footnotetext{这里之前的版本中是“该直线的方向向量为$(-b,a)$。}
+
+又$\because z=f(x,y)$处处可微，\footnotemark\footnotetext{这里加上了这句。}
+
+$\therefore z=f(x,y)$在直线$ax+by=C$上的每一点处沿$(-b,a)$方向的方向导数\footnotemark\footnotetext{这里之前的版本中是“$\therefore z$在该直线方向的方向导数，”，不准确。}
+\[\frac{\partial z}{\partial\bm l}=\mathrm{grad}z\bm\cdot\frac1{a^2+b^2}(-b,a)=(z'_x,z'_y)\bm\cdot\frac1{a^2+b^2}(-b,a)=\frac1{\sqrt{a^2+b^2}}(-bz'_x+az'_y)=0,\]
+$\therefore$在直线$ax+by=C$上的每一点处$bz'_x=az'_y$，由$C$的任意性知$bz'_x=az'_y$处处成立.\footnotemark\footnotetext{这里之前的版本中是“$\therefore bz'_x=az'_y$.”，不准确。}
+
+\item设$D$为包含原点$O(0,0)$的一个圆域. $f(x,y)$在$D$中处处有连续偏导数，并且满足$xf'_x+yf'_y=0$. 求证$f(x,y)$在$D$中恒等于某个常数.
+
+证明：$\because f(x,y)$在$D$中处处有连续偏导数，
+
+$\therefore f(x,y)$在$D$中处处可微，
+
+$\therefore f(x,y)$在点$(x,y)\in D((x,y)\neq(0,0))$处由原点$(0,0)$指向点$(x,y)$方向的方向导数\footnotemark\footnotetext{这里之前的版本中是“$\therefore f(x,y)$在点$(x,y)\in D((x,y)\neq(0,0))$处的方向导数”，表述不很清楚。}
+\[\frac{\partial f(x,y)}{\partial\bm v}=\mathrm{grad}f(x,y)\bm\cdot\frac1{\sqrt{x^2+y^2}}(x,y)=\frac1{\sqrt{x^2+y^2}}(f'_x,f'_y)\bm\cdot(x,y)=\frac{xf'_x+yf'_y}{\sqrt{x^2+y^2}}=0,\]
+$\therefore f(x,y)$在$D$中由原点出发且不含原点的每一条射线上任一点处沿该射线方向的方向导数均为$0$,\footnotemark\footnotetext{这里在第一版的基础上增加了这句。}
+
+$\therefore f(x,y)$在$D$中由原点出发且不含原点的每一条射线上均为常数，\footnotemark\footnotetext{这里之前的版本中是“$\therefore f(x,y)$在经过原点且不包括原点的直线上恒为常数，”，不准确。}
+
+$\because f(x,y)$在$D$中处处可微，故处处连续，故在原点$(0,0)$处连续，\footnotemark\footnotetext{这里加上了“故在原点$(0,0)$处连续，”。}
+
+$\therefore f(x,y)$在$D$中由原点出发的每一条射线上均等于$f(0,0)$，\footnotemark\footnotetext{这里新加上了这句。}
+
+$\therefore f(x,y)=f(0,0),(x,y)\in D$.
+%
+%【注意：】如果区域$D$不包含原点，但仍有$f(x,y)$在$D$中处处有连续偏导数，并且满足$xf'_x+yf'_y=0$. 则$f(x,y)$在$D$中不一定恒等于常数，比如函数
+%\[f(x,y)=
+%\begin{cases}
+%\cos(\arccos\frac x{\sqrt{x^2+y^2}}),&y\geqslant0,\\
+%\cos(2\pi-\arccos\frac x{\sqrt{x^2+y^2}}),&y<0,
+%\end{cases}\]
+%该函数在极坐标下的方程是$f(r\cos\theta,r\sin\theta)=\cos\theta$，函数$f(x,y)$在$D$中处处有连续偏导数，且在由原点出发的每一条射线$\theta=C$上均为常数$\cos C$，故满足$xf'_x+yf'_y=0$，但$f(x,y)\not\equiv const$.
+%
+%\item[7.]设$D$为包含原点$O(0,0)$的一个圆域. $f(x,y)$在$D$中处处有连续偏导数，并且满足$xf'_x+yf'_y=0$. 求证$f(x,y)$在$D$中恒等于某个常数.
+%
+%证明：$\because f(x,y)$在$D$中处处有连续偏导数，
+%
+%$\therefore f(x,y)$在$D$中处处可微，
+%
+%$\therefore f(x,y)$在点$(x,y)\in D((x,y)\neq(0,0))$处由原点$(0,0)$指向点$(x,y)$方向的方向导数
+%\[\frac{\partial f(x,y)}{\partial\bm v}=\mathrm{grad}f(x,y)\bm\cdot\frac1{\sqrt{x^2+y^2}}(x,y)=\frac1{\sqrt{x^2+y^2}}(f'_x,f'_y)\bm\cdot(x,y)=\frac{xf'_x+yf'_y}{\sqrt{x^2+y^2}}=0,\]
+%$\therefore f(x,y)$在$D$中由原点出发且不含原点的每一条射线上任一点处沿该射线方向的方向导数均为$0$,
+%
+%$\therefore f(x,y)$在$D$中由原点出发且不含原点的每一条射线上均为常数，
+%
+%$\because f(x,y)$在$D$中处处可微，故处处连续，故在原点$(0,0)$处连续，
+%
+%$\therefore f(x,y)$在$D$中由原点出发的每一条射线上均等于$f(0,0)$，
+%
+%$\therefore f(x,y)=f(0,0),(x,y)\in D$.
+
+【注意：】如果区域$D$不包含原点，但仍有$f(x,y)$在$D$中处处有连续偏导数，并且满足$xf'_x+yf'_y=0$，则$f(x,y)$在$D$中不一定恒等于常数，比如函数
+\[f(x,y)=
+\begin{cases}
+\cos(\arccos\frac x{\sqrt{x^2+y^2}}),&y\geqslant0,\\
+\cos(2\pi-\arccos\frac x{\sqrt{x^2+y^2}}),&y<0.
+\end{cases}\]
+该函数在极坐标下的方程是$f(r\cos\theta,r\sin\theta)=\cos\theta$. 函数$f(x,y)$在$D$中处处有连续偏导数，且在由原点出发的每一条射线$\theta=C$上均为常数$\cos C$，故满足$xf'_x+yf'_y=0$，但$f(x,y)\not\equiv const$. 
+
+函数$f(x,y),(x,y)\in\Set{(x,y)}{0<x^2+y^2\leqslant1}$的图形如图~\ref{costheta}所示.
+%\begin{figure}[H]
+%\begin{center}
+% \subfloat[]{\label{costheta-1}
+%{\includegraphics[height=0.3\textheight]{Figures16/COSTHETA-1.png} }}
+%	\subfloat[]{\label{costheta-2}
+%{\includegraphics[height=0.3\textheight]{Figures16/COSTHETA-2.png} }}
+%\end{center}
+%\caption{函数$f(r\cos\theta,r\sin\theta)=\cos\theta,(r,\theta)\in\Set{(r,\theta)}{0<r\leqslant1,0\leqslant\theta\leqslant2\pi}$的图形}
+%\label{costheta}
+%\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\subfigure[]{\label{costheta-1}{\includegraphics[height=0.3\textheight]{Figures16/COSTHETA-1.png} }}
+\subfigure[]{\label{costheta-2}
+{\includegraphics[height=0.3\textheight]{Figures16/COSTHETA-2.png} }}
+\end{center}
+\caption{函数$f(r\cos\theta,r\sin\theta)=\cos\theta,(r,\theta)\in\Set{(r,\theta)}{0<r\leqslant1,0\leqslant\theta\leqslant2\pi}$的图形}
+\label{costheta}
+\end{figure}
+
+\end{enumerate}
+\subsection{习题11.1解答}
+\begin{enumerate}
+\item设$\bm u(t),\bm v(t)$是可导的向量值函数，$\lambda(t)$为可导数值函数，求证：\\
+(1)$\frac{\mathrm d}{\mathrm dt}(\lambda(t)\bm u(t))=\frac{\mathrm d\lambda(t)}{\mathrm dt}\bm u(t)+\lambda(t)\frac{\mathrm d}{\mathrm dt}\bm u(t)$；\\
+(2)$\frac{\mathrm d}{\mathrm dt}(\bm u(t)\bm\cdot\bm v(t))=(\frac{\mathrm d}{\mathrm dt}\bm u(t))\bm\cdot\bm v(t)+\bm u(t)\bm\cdot(\frac{\mathrm d}{\mathrm dt}\bm v(t))$.
+
+证明：(1)设$\bm u(t)=(u_1(t),u_2(t),u_3(t))$，则$\lambda(t)\bm u(t)=(\lambda(t)u_1(t),\lambda(t)u_2(t),\lambda(t)u_3(t))$，
+\[\begin{split}
+\frac{\mathrm d}{\mathrm dt}(\lambda(t)\bm u(t))&=({\mathrm dt}[\lambda(t)u_1(t)]',[\lambda(t)u_2(t)]',[\lambda(t)u_3(t)]')\\
+&=(\lambda'(t)u_1(t)+\lambda(t)u'_1(t),\lambda'(t)u_2(t)+\lambda(t)u'_2(t),\lambda'(t)u_3(t)+\lambda(t)u'_3(t))\\
+&=(\lambda'(t)u_1(t),\lambda'(t)u_2(t),\lambda'(t)u_3(t))+(\lambda(t)u'_1(t),\lambda(t)u'_2(t),\lambda(t)u'_3(t))\\
+&=\lambda'(t)(u_1(t),u_2(t),u_3(t))+\lambda(t)(u'_1(t),u'_2(t),u'_3(t))\\
+&=\frac{\mathrm d\lambda(t)}{\mathrm dt}\bm u(t)+\lambda(t)\frac{\mathrm d}{\mathrm dt}\bm u(t).
+\end{split}\]
+(2)设$\bm u(t)=(u_1(t),u_2(t),u_3(t)),\bm v(t)=(v_1(t),v_2(t),v_3(t))$，
+
+则$\bm u(t)\bm\cdot\bm v(t)=u_1(t)v_1(t)+u_2(t)v_2(t)+u_3(t)v_3(t)$，
+\[\begin{split}
+\frac{\mathrm d}{\mathrm dt}(\bm u(t)\bm\cdot\bm v(t))&=\frac{\mathrm d}{\mathrm dt}[u_1(t)v_1(t)+u_2(t)v_2(t)+u_3(t)v_3(t)]\\
+&=u'_1(t)v_1(t)+u_1(t)v'_1(t)+u'_2(t)v_2(t)+u_2(t)v'_2(t)+u'_3(t)v_3(t)+u_3(t)v'_3(t)\\
+&=u'_1(t)v_1(t)+u'_2(t)v_2(t)+u'_3(t)v_3(t)+u_1(t)v'_1(t)+u_2(t)v'_2(t)+u_3(t)v'_3(t)\\
+&=(\frac{\mathrm d}{\mathrm dt}\bm u(t))\bm\cdot\bm v(t)+\bm u(t)\bm\cdot(\frac{\mathrm d}{\mathrm dt}\bm v(t)).
+\end{split}\]
+\item求下列曲线在指定点的单位切向量：\\
+(1)$\bm r(t)=(\mathrm e^{2t},\mathrm e^{-2t},t\mathrm e^{2t}),t=0$；\\
+(2)$\bm r(t)=t\bm i+2\sin t\bm j+3\cos t\bm k,t=\frac\pi6$.
+
+解：(1)单位切向量$\bm t=\frac{\bm r'(t)}{|\bm r'(t)|}=\frac{(2\mathrm e^{2t},-2\mathrm e^{-2t},(1+2t)\mathrm e^{2t})}{\|(2\mathrm e^{2t},-2\mathrm e^{-2t},(1+2t)\mathrm e^{2t})\|}\Big|_{t=0}=\frac{(2,-2,1)}{\sqrt{4+4+1}}=(\frac23,-\frac23,\frac13)$.
+
+(2)单位切向量$\bm t=\frac{\bm r'(t)}{|\bm r'(t)|}=\frac{\bm i+2\cos t\bm j-3\sin t\bm k}{\|\bm i+2\cos t\bm j-3\sin t\bm k\|}\Big|_{t=\frac\pi6}=\frac{\bm i+\sqrt3\bm j-\frac32\bm k}{\sqrt{1+3+\frac94}}=\frac25\bm i+\frac{2\sqrt3}5\bm j-\frac35\bm k$.
+
+\item求下列曲线在指定点的切线方程：\\
+(1)$\bm r(t)=(1+2t,1+t-t^2,1-t+t^2-t^3),M(1,1,1)$；\\
+(2)$\bm r(t)=\sin(\pi t)\bm i+\sqrt t\bm j+\cos(\pi t)\bm k,M(0,1,-1)$.
+
+解：(1)在$M(1,1,1)$点处$t=0$，切向量$\bm t=\bm r'(0)=(2,1-2t,-1+2t-3t^2)_{t=0}=(2,1,-1)$，则切线方程为
+\[\frac{x-1}2=y-1=-(z-1).\]
+(2)在$M(0,1,-1)$点处$t=1$，切向量$\bm t=\bm r'(1)=\pi\cos(\pi t)\bm i+\frac1{2\sqrt t}\bm j-\pi\sin(\pi t)\bm k\big|_{t=1}=-\pi\bm i+\frac12\bm j$，则切线方程为$\begin{cases}
+\frac x{-\pi}=2(y-1),\\
+z=-1,
+\end{cases}$即$\begin{cases}
+x+2\pi y=2\pi,\\
+z=-1.
+\end{cases}$
+
+\item求下列向量值函数的积分：\\
+(1)$\int_0^{\frac\pi4}[\cos(2t)\bm i+\sin(2t)\bm j+t\sin t\bm k]\mathrm dt$；\\
+(2)$\int_1^4(\sqrt t\bm i+t\mathrm e^{-t}\bm j+\frac1{t^2}\bm k)\mathrm dt$.
+
+解：(1)$\int_0^{\frac\pi4}[\cos(2t)\bm i+\sin(2t)\bm j+t\sin t\bm k]\mathrm dt=\int_0^{\frac\pi4}\cos(2t)\mathrm dt\bm i+\int_0^{\frac\pi4}\sin(2t)\mathrm dt\bm j+\int_0^{\frac\pi4}t\sin t\mathrm dt\bm k$,
+
+$\because\int_0^{\frac\pi4}\cos(2t)\mathrm dt=\frac12\sin(2t)\big|_0^{\frac\pi4}=\frac12,\ \int_0^{\frac\pi4}\sin(2t)\mathrm dt=-\frac12\cos(2t)\big|_0^{\frac\pi4}=\frac12,\\
+\int_0^{\frac\pi4}t\sin t\mathrm dt=-\int_0^{\frac\pi4}t\mathrm d\cos t=-t\cos t\big|_0^{\frac\pi4}+\int_0^{\frac\pi4}\cos t\mathrm dt=-\frac{\sqrt2\pi}{8}+\sin t\big|_0^{\frac\pi4}=-\frac{\sqrt2\pi}{8}+\frac{\sqrt2}2$,
+
+$\therefore\int_0^{\frac\pi4}[\cos(2t)\bm i+\sin(2t)\bm j+t\sin t\bm k]\mathrm dt=\frac12\bm i+\frac12\bm j+(-\frac{\sqrt2\pi}{8}+\frac{\sqrt2}2)\bm k$.
+
+(2)$\int_1^4(\sqrt t\bm i+t\mathrm e^{-t}\bm j+\frac1{t^2}\bm k)\mathrm dt=\int_1^4\sqrt t\mathrm dt\bm i+\int_1^4t\mathrm e^{-t}\mathrm dt\bm j+\int_1^4\frac1{t^2}\mathrm dt\bm k$,
+
+$\because\int_1^4\sqrt t\mathrm dt=\frac1{1+\frac12}t^{\frac12+1}\big|_1^4=\frac{14}3,\int_1^4t\mathrm e^{-t}\mathrm dt=-\int_1^4t\mathrm d\mathrm e^{-t}=-t\mathrm e^{-t}\big|_1^4+\int_1^4\mathrm e^{-t}\mathrm dt\\
+=-4\mathrm e^{-4}+\mathrm e^{-1}-\mathrm e^{-t}\big|_1^4=-4\mathrm e^{-4}+\mathrm e^{-1}-\mathrm e^{-4}+\mathrm e^{-1}=-5\mathrm e^{-4}+2\mathrm e^{-1},\\
+\int_1^4\frac1{t^2}\mathrm dt=\frac1{-2+1}t^{-2+1}\big|_1^4=-\frac14+1=\frac34$,
+
+$\therefore\int_1^4(\sqrt t\bm i+t\mathrm e^{-t}\bm j+\frac1{t^2}\bm k)\mathrm dt=\frac{14}3\bm i+(-5\mathrm e^{-4}+2\mathrm e^{-1})\bm j+\frac34\bm k$.
+
+\item已知$\bm r'(t),\bm r(0)$，求$\bm r(t)$：\\
+(1)$\bm r'(t)=(t^2,4t^3,-t^2),\bm r(0)=(0,1,0)$；\\
+(2)$\bm r'(t)=\sin t\bm i-\cos t\bm j+2t\bm k,\bm r(0)=\bm i+\bm j+2\bm k$.
+
+解：(1)方法1：
+\[\begin{split}
+\bm r(t)&=\int_0^t\bm r'(t)\mathrm dt+\bm C=(\int_0^tt^2\mathrm dt+C_1,\int_0^t4t^3\mathrm dt+C_2,\int_0^t(-t^2)\mathrm dt+C_3)\\
+&=(\frac13t^3+C_1,t^4+C_2,-\frac13t^3+C_3),
+\end{split}\]
+$\therefore\bm r(0)=(C_1,C_2,C_3)=(0,1,0)$,
+
+$\therefore\bm r(t)=(\frac13t^3,t^4+1,-\frac13t^3)$.
+
+方法2：$\because\int t^2\mathrm dt=\frac13t^3+C,\ \int4t^3\mathrm dt=t^4+C,\ \int(-t^2)\mathrm dt=-\frac13t^3+C$,
+
+$\therefore r(t)=\int\bm r'(t)\mathrm dt=(\frac13t^3+C_1,t^4+C_2,-\frac13t^3+C_3)$,
+
+$\because\bm r(0)=(0,1,0)$,
+
+$\therefore C_1=0,\ C_2=1,\ C_3=0$,
+
+$\therefore\bm r(t)=(\frac13t^3,t^4+1,-\frac13t^3)$.
+
+(2)方法1：\[\begin{split}
+\bm r(t)=&\int_0^t\bm r'(t)\mathrm dt+\bm C=(\int_0^t\sin t\mathrm dt+C_1)\bm i+(-\int_0^t\cos t\mathrm dt+C_2)\bm j+(\int_0^t2t\mathrm dt+C_3)\bm k\\
+=&(-\cos t+C_1)\bm i+(-\sin t+C_2)\bm j+(t^2+C_3)\bm k,
+\end{split}\]
+$\because\bm r(0)=(-1+C_1)\bm i+C_2\bm j+C_3\bm k=\bm i+\bm j+2\bm k$,
+
+$\therefore C_1=2,C_2=1,C_3=2$,
+
+$\therefore\bm r(t)=(-\cos t+2)\bm i+(-\sin t+1)\bm j+(t^3+2)\bm k$.
+
+方法2：$\because\int\sin t\mathrm dt=-\cos t+C,\ \int(-\cos t)\mathrm dt=-\sin t+C,\ \int2t\mathrm dt=t^2+C$,
+
+$\therefore\bm r(t)=\int\bm r'(t)\mathrm dt=(-\cos t+C_1)\bm i+(-\sin t+C_2)\bm j+(t^2+C_3)\bm k$,
+
+$\because\bm r(0)=\bm i+\bm j+2\bm k$,
+
+$\therefore C_1=2,\ C_2=1,\ C_3=2$,
+
+$\therefore\bm r(t)=(-\cos t+2)\bm i+(-\sin t+1)\bm j+(t^3+2)\bm k$.
+
+\item证明下列等式：\\
+(1)$\frac{\mathrm d}{\mathrm dt}(\bm r(t)\times\bm r'(t))=\bm r(t)\times\bm r''(t)$；\\
+(2)$\frac{\mathrm d}{\mathrm dt}\|\bm r(t)\|=\frac{\bm r(t)\bm\cdot\bm r'(t)}{\|\bm r(t)\|}(\bm r(t)\neq\bm0)$；\\
+(3)$\frac{\mathrm d}{\mathrm dt}[\bm r(t)\bm\cdot(\bm r'(t)\times\bm r''(t))]=\bm r(t)\bm\cdot[\bm r'(t)\times\bm r'''(t)]$.
+
+证明：(1)$\frac{\mathrm d}{\mathrm dt}(\bm r(t)\times\bm r'(t))=\bm r'(t)\times\bm r'(t)+\bm r(t)\times\bm r''(t)=\bm r(t)\times\bm r''(t)$.
+
+(2)$\frac{\mathrm d}{\mathrm dt}\|\bm r(t)\|=\frac{\mathrm d}{\mathrm dt}\sqrt{\bm r(t)\bm\cdot\bm r(t)}=\frac1{2\sqrt{\bm r(t)\bm\cdot\bm r(t)}}\frac{\mathrm d}{\mathrm dt}[\bm r(t)\bm\cdot\bm r(t)]\\
+=\frac1{2\sqrt{\bm r(t)\bm\cdot\bm r(t)}}[\bm r'(t)\bm\cdot\bm r(t)+\bm r(t)\bm\cdot\bm r'(t)]=\frac{2\bm r(t)\bm\cdot\bm r'(t)}{2\sqrt{\bm r(t)\bm\cdot\bm r(t)}}=\frac{\bm r(t)\bm\cdot\bm r'(t)}{\|\bm r(t)\|}(\bm r(t)\neq\bm0)$.
+
+(3)$\frac{\mathrm d}{\mathrm dt}[\bm r(t)\bm\cdot(\bm r'(t)\times\bm r''(t))]=\bm r'(t)\bm\cdot(\bm r'(t)\times\bm r''(t))+\bm r(t)\bm\cdot\frac{\mathrm d}{\mathrm dt}(\bm r'(t)\times\bm r''(t))\\
+=\bm r(t)\bm\cdot\frac{\mathrm d}{\mathrm dt}(\bm r'(t)\times\bm r''(t))=\bm r(t)\bm\cdot(\bm r''(t)\times\bm r''(t)+\bm r'(t)\times\bm r'''(t))=\bm r(t)\bm\cdot[\bm r'(t)\times\bm r'''(t)]$.
+
+\item求等速圆周运动$\bm r=R\cos(\omega t)\bm i+R\sin(\omega t)\bm j$在$t$时刻的速度与加速度.
+
+解：$t$时刻的速度$\bm v(t)=\bm r'(t)=-R\omega\sin(\omega t)\bm i+R\omega\cos(\omega t)\bm j$,
+
+$t$时刻的加速度$\bm a(t)=\bm v'(t)=-R\omega^2\cos(\omega t)\bm i-R\omega^2\sin(\omega t)\bm j$.
+
+\item已知螺旋线的向量方程为$\bm r=a\cos\theta\bm i+a\sin\theta\bm j+b\theta\bm k(a>0,b>0)$，求在$\theta_0$处的切线方程.
+
+解：在$\theta_0$处的切向量$\bm r'(\theta_0)=-a\sin\theta_0\bm i+a\cos\theta_0\bm j+b\bm k$，切线方程
+\[\frac{x-a\cos\theta_0}{-a\sin\theta_0}=\frac{y-a\sin\theta_0}{a\cos\theta_0}=\frac{z-b\theta_0}b.\]
+
+\item设$\bm r=-a\sin\theta\bm i+a\cos\theta\bm j+b\theta\bm k$，求$\frac12\int_0^{2\pi}(\bm r\times\bm r')\mathrm d\theta$.
+
+解：$\bm r'(\theta)=-a\cos\theta\bm i-a\sin\theta\bm j+b\bm k$,
+
+$\bm r(\theta)\times\bm r'(\theta)=\begin{vmatrix}
+\bm i&\bm j&\bm k\\
+-a\sin\theta&a\cos\theta&b\theta\\
+-a\cos\theta&-a\sin\theta&b
+\end{vmatrix}=\begin{vmatrix}
+a\cos\theta&b\theta\\
+-a\sin\theta&b
+\end{vmatrix}\bm i+\begin{vmatrix}
+b\theta&-a\sin\theta\\
+b&-a\cos\theta
+\end{vmatrix}\bm j+\begin{vmatrix}
+-a\sin\theta&a\cos\theta\\
+-a\cos\theta&-a\sin\theta
+\end{vmatrix}\bm k\\
+=(ab\cos\theta+ab\theta\sin\theta)\bm i-(-ab\sin\theta+ab\theta\cos\theta)\bm j+a^2\bm k$,
+
+$\because\int_0^{2\pi}(ab\cos\theta+ab\theta\sin\theta)\mathrm d\theta=ab\sin\theta\big|_0^{2\pi}-\int_0^{2\pi}ab\theta\mathrm d\cos\theta\\
+=-ab\theta\cos\theta\big|_0^{2\pi}+\int_0^{2\pi}ab\cos\theta\mathrm d\theta=-2\pi ab+ab\sin\theta\big|_0^{2\pi}=-2\pi ab,\\
+\int_0^{2\pi}-(-ab\sin\theta+ab\theta\cos\theta)\mathrm d\theta=\int_0^{2\pi}(ab\sin\theta-ab\theta\cos\theta)\mathrm d\theta=-ab\cos\theta\big|_0^{2\pi}-ab\int_0^{2\pi}\theta\mathrm d\sin\theta\\
+=-ab\theta\sin\theta\big|_0^{2\pi}+ab\int_0^{2\pi}\sin\theta\mathrm d\theta=-ab\cos\theta\big|_0^{2\pi}=0,\\
+\int_0^{2\pi}a^2\mathrm d\theta=2\pi a^2$,
+
+$\therefore\frac12\int_0^{2\pi}(\bm r\times\bm r')\mathrm d\theta=-\pi ab\bm i+\pi a^2\bm k$.
+\end{enumerate}
+\subsection{习题11.2解答}
+\begin{enumerate}
+\item求下列曲面在指定点的法线方程与切平面的方程：\\
+(1)$x^2+y^2+z^2=14$，在点$(1,2,3)$；\\
+(2)$z=\frac12x^2-y^2$，在点$(2,-1,1)$；\\
+(3)$(2a^2-z^2)x^2-a^2y^2=0$，在点$(a,a,a)$；\\
+(4)$\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1$，在点$(\frac a{\sqrt3},\frac b{\sqrt3},\frac c{\sqrt3})$；\\
+(5)$\begin{cases}
+x=u\cos v,\\
+y=u\sin v,\\
+z=av,
+\end{cases}$在$(u,v)=(u_0,v_0)$处.
+
+解：(1)法向量$\bm n=(2x,2y,2z)\big|_{(1,2,3)}=2(1,2,3)$,
+
+法线方程$x-1=\frac{y-2}2=\frac{z-3}3$,
+
+切平面方程$(x-1)+2(y-2)+3(z-3)=0$，即$x+2y+3z=14$.
+
+(2)法向量$\bm n=(x,-2y,-1)\big|_{(2,-1,1)}=(2,2,-1)$,
+
+法线方程$\frac{x-2}2=\frac{y+1}2=-(z-1)$,
+
+切平面方程$2(x-2)+2(y+1)-(z-1)=0$，即$2x+2y-z=1$.
+
+(3)法向量$\bm n=(2(2a^2-z^2)x,-2a^2y,-2x^2z)\big|_{(a,a,a)}=2a^3(1,-1,-1)$,
+
+法线方程$x-a=-(y-a)=-(z-a)$,
+
+切平面方程$(x-a)-(y-a)-(z-a)=0$，即$x-y-z=-a$.
+
+(4)法向量$\bm n=(\frac{2x}{a^2},\frac{2y}{b^2},\frac{2z}{c^2})\big|_{(\frac a{\sqrt3},\frac b{\sqrt3},\frac c{\sqrt3})}=\frac2{\sqrt3}(\frac1a,\frac1b,\frac1c)$,
+
+法线方程$a(x-\frac a{\sqrt3})=b(y-\frac b{\sqrt3})=c(z-\frac c{\sqrt3})$,
+
+切平面方程$\frac1a(x-\frac a{\sqrt3})+\frac1b(y-\frac b{\sqrt3})+\frac1c(z-\frac c{\sqrt3})=0$，即$\frac xa+\frac yb+\frac zc=\sqrt3$.
+
+(5)法向量$\bm n=(\cos v,\sin v,0)\times(-u\sin v,u\cos v,a)\big|_{(u_0,v_0)}=\begin{vmatrix}
+\bm i&\bm j&\bm k\\
+\cos v_0&\sin v_0&0\\
+-u_0\sin v_0&u_0\cos v_0&a
+\end{vmatrix}\\
+=(\begin{vmatrix}
+\sin v_0&0\\
+u_0\cos v_0&a
+\end{vmatrix},\begin{vmatrix}
+0&a\\
+a&u_0\cos v_0
+\end{vmatrix},\begin{vmatrix}
+\cos v_0&\sin v_0\\
+-u_0\sin v_0&u_0\cos v_0
+\end{vmatrix})=(a\sin v_0,-a\cos v_0,u_0)$,
+
+法线方程$\frac{x-u_0\cos v_0}{a\sin v_0}=\frac{y-u_0\sin v_0}{-a\cos v_0}=\frac{z-av_0}{u_0}$,
+
+切平面方程$a\sin v_0(x-u_0\cos v_0)-a\cos v_0(y-u_0\sin v_0)+u_0(z-av_0)=0$，\\
+即$ax\sin v_0-ay\cos v_0+zu_0=au_0v_0$.
+
+\item按要求求下列曲面的切平面方程：\\
+(1)曲面$x^2+2y^2+3z^2=21$的与平面$x+4y+6z=0$平行的切平面；\\
+(2)曲面$z=x^2+y^2$的与直线$\begin{cases}
+x+2z=1,\\
+y+2z=2
+\end{cases}$垂直的切平面；\\
+(3)双曲抛物面$\bm r=(u+v,u-v,uv)$在$u=1,v=-1$处的切平面.
+
+解：(1)曲面的法向量$\bm n=(2x,4y,6z)$，平面的法向量$\bm n_1=(1,4,6)$，\\则由$\begin{cases}(2x,4y,6z)=a(1,4,6),\\
+x^2+2y^2+3z^2=21
+\end{cases}$得曲面上与该平面相切的切平面的切点为$\pm(1,2,2)$，
+
+切平面方程$x-1+4(y-2)+6(z-2)=0$或$x+1+4(y+2)+6(z+2)=0$，即$x+4y+6z=\pm21$.
+
+(2)直线的切向量$\bm t=(1,0,2)\times(0,1,2)=\begin{vmatrix}
+\bm i&\bm j&\bm k\\
+1&0&2\\
+0&1&2\\
+\end{vmatrix}=(\begin{vmatrix}
+0&2\\
+1&2
+\end{vmatrix},\begin{vmatrix}
+2&1\\
+2&0
+\end{vmatrix},\begin{vmatrix}
+1&0\\
+0&1
+\end{vmatrix})=(-2,-2,1)$，曲面的法向量$\bm n=(2x,2y,-1)$，曲面上与直线垂直的切平面的法向量$\bm n_0=a\bm t$，\\
+由$\begin{cases}
+(2x,2y,-1)=a(-2,-2,1),\\
+z=x^2+y^2
+\end{cases}$可得切点为$(1,1,2)$,
+
+切平面方程$-2(x-1)-2(y-1)+z-2=0$，即$2x+2y-z=2$.
+
+(3)法向量$\bm n=(1,1,v)\times(1,-1,u)\big|_{(1,-1)}=\begin{vmatrix}
+\bm i&\bm j&\bm k\\
+1&1&-1\\
+1&-1&1
+\end{vmatrix}=(\begin{vmatrix}
+1&-1\\
+-1&1
+\end{vmatrix},\begin{vmatrix}
+-1&1\\
+1&1
+\end{vmatrix},\begin{vmatrix}
+1&1\\
+1&-1
+\end{vmatrix})\\
+=(0,-2,-2)$，切点为$(0,2,-1)$，
+
+切平面的方程$-2(y-2)-2(z+1)=0$，即$y+z=1$.
+
+\item求证：曲面$\sqrt x+\sqrt y+\sqrt z=\sqrt a,a>0$在任意点处的切平面在各坐标轴上的截距之和为$a$.
+
+证明：曲面在任意点$(x_0,y_0,z_0)$处的法向量$\bm n=\frac12(\frac1{\sqrt{x_0}},\frac1{\sqrt{y_0}},\frac1{\sqrt{z_0}})$,\\
+切平面方程$\frac1{\sqrt{x_0}}(x-x_0)+\frac1{\sqrt{y_0}}(y-y_0)+\frac1{\sqrt{z_0}}(z-z_0)=0$，即$\frac x{ax_0}+\frac y{ay_0}+\frac z{az_0}=1$,
+
+切平面在$x,y,z$轴上的截距之和
+\[\begin{split}
+\sqrt{ax_0}+\sqrt{ay_0}+\sqrt{az_0}=\sqrt a(\sqrt{x_0}+\sqrt{y_0}+\sqrt{z_0})=a.
+\end{split}\]
+
+\item证明二次曲面$ax^2+by^2+cz^2=1$在点$M_0(x_0,y_0,z_0)$处的切平面方程为
+\[
+ax_0x+by_0y+cz_0z=1.
+\]
+证明：曲面在点$M_0(x_0,y_0,z_0)$处的法向量$\bm n=2(ax_0,by_0,cz_0)$,
+
+切平面方程
+\[\begin{split}
+&ax_0(x-x_0)+by_0(y-y_0)+cz_0(z-z_0)\\
+=&ax_0x-ax_0^2+by_0y-by_0^2+cz_0z-cz_0^2\\
+=&ax_0x-by_0y-cz_0z-1=0,
+\end{split}\]
+即\[
+ax_0x+by_0y+cz_0z=1.
+\]
+
+\item设函数$f$可微，试证曲面$z=yf(\frac xy)$的所有切平面相交于一个公共点.
+
+证明：曲面在点$(x_0,y_0,z_0)$处的法向量$\bm n=(yf'(\frac xy)\frac1y,f(\frac xy)+yf'(\frac xy)(-\frac x{y^2}),-1)\big|_{(x_0,y_0,z_0)}\\
+=(f'(\frac{x_0}{y_0}),f(\frac{x_0}{y_0})-\frac{x_0}{y_0}f'(\frac{x_0}{y_0}),-1)$,
+
+切平面的方程
+\[\begin{split}
+&f'(\frac{x_0}{y_0})(x-x_0)+[f(\frac{x_0}{y_0})-\frac{x_0}{y_0}f'(\frac{x_0}{y_0})](y-y_0)-(z-z_0)\\
+=&f'(\frac{x_0}{y_0})x+[f(\frac{x_0}{y_0})-\frac{x_0}{y_0}f'(\frac{x_0}{y_0})]y-z-x_0f'(\frac{x_0}{y_0})-y_0f(\frac{x_0}{y_0})+x_0f'(\frac{x_0}{y_0})+z_0\\
+=&f'(\frac{x_0}{y_0})x+[f(\frac{x_0}{y_0})-\frac{x_0}{y_0}f'(\frac{x_0}{y_0})]y-z\\
+%=&f'(\frac{x_0}{y_0})(x-\frac{x_0}{y_0}y)+f(\frac{x_0}{y_0})y-z\\
+%=&f'(\frac{x_0}{y_0})(x-\frac{x_0}{y_0}y)+\frac{z_0}{y_0}y-z\\
+=&0,
+\end{split}\]
+$\because$无论切点$(x_0,y_0,z_0)$取在何处，点$(x,y,z)=(0,0,0)$始终满足以上方程，
+
+$\therefore$曲面$z=yf(\frac xy)$的所有切平面相交于一个公共点$(0,0,0)$.
+
+\item已知函数$f$可微，证明曲面$f(\frac{x-a}{z-c},\frac{y-b}{z-c})=0$上任意一点处的切平面通过一定点，并求出此点的位置.
+
+证明：曲面上任一点$(x_0,y_0,z_0)$处的法向量
+\[
+\bm n=(\frac1{z_0-c}f'_1,\frac1{z_0-c}f'_2,-\frac{x_0-a}{(z_0-c)^2}f'_1-\frac{y_0-b}{(z_0-c)^2}f'_2),
+\]
+切平面方程
+\[\begin{split}
+&\frac{x-x_0}{z_0-c}f'_1+\frac{y-y_0}{z_0-c}f'_2+[-\frac{x_0-a}{(z_0-c)^2}f'_1-\frac{y_0-b}{(z_0-c)^2}f'_2](z-z_0)\\
+=&[\frac{x-x_0}{z_0-c}-\frac{x_0-a}{(z_0-c)^2}(z-z_0)]f'_1+[\frac{y-y_0}{z_0-c}-\frac{y_0-b}{(z_0-c)^2}(z-z_0)]f'_2\\
+=&0,
+\end{split}\]
+其中偏导数均在$(\frac{x_0-a}{z_0-c},\frac{y_0-b}{z_0-c})$处取值，
+
+$\because$无论切点$(x_0,y_0,z_0)$取在何处，$(x,y,z)=(a,b,c)$始终满足以上方程，
+
+$\therefore$曲面$f(\frac{x-a}{z-c},\frac{y-b}{z-c})=0$上任意一点处的切平面通过定点$(a,b,c)$.
+
+\item设曲面$S_1$和$S_2$的方程分别为$F_1(x,y,z)=0,F_2(x,y,z)=0$，其中$F_1$和$F_2$是可微函数，试证$S_1$与$S_2$垂直的充分必要条件是对交线上的任意一点$(x,y,z)$，均有
+\[
+\frac{\partial F_1}{\partial x}\frac{\partial F_2}{\partial x}+\frac{\partial F_1}{\partial y}\frac{\partial F_2}{\partial y}+\frac{\partial F_1}{\partial z}\frac{\partial F_2}{\partial z}=0.
+\]
+证明：必要性：$\because S_1$与$S_2$垂直，
+
+$\therefore$交线上的任意一点$(x,y,z)$处两曲面的法向量互相垂直，即
+\[
+(\frac{\partial F_1}{\partial x},\frac{\partial F_1}{\partial y},\frac{\partial F_1}{\partial z})\bm\cdot(\frac{\partial F_2}{\partial x},\frac{\partial F_2}{\partial y},\frac{\partial F_2}{\partial z})=\frac{\partial F_1}{\partial x}\frac{\partial F_2}{\partial x}+\frac{\partial F_1}{\partial y}\frac{\partial F_2}{\partial y}+\frac{\partial F_1}{\partial z}\frac{\partial F_2}{\partial z}=0;
+\]
+充分性：$\because$交线上的任意一点$(x,y,z)$处
+\[
+\frac{\partial F_1}{\partial x}\frac{\partial F_2}{\partial x}+\frac{\partial F_1}{\partial y}\frac{\partial F_2}{\partial y}+\frac{\partial F_1}{\partial z}\frac{\partial F_2}{\partial z}=(\frac{\partial F_1}{\partial x},\frac{\partial F_1}{\partial y},\frac{\partial F_1}{\partial z})\bm\cdot(\frac{\partial F_2}{\partial x},\frac{\partial F_2}{\partial y},\frac{\partial F_2}{\partial z})=0,
+\]
+$\therefore$交线上的任意一点$(x,y,z)$处曲面$S_1$与$S_2$的法向量互相垂直，
+
+$\therefore S_1$与$S_2$垂直.
+
+\item已知函数$F$可微，若$T$为曲面$S:\ F(x,y,z)=0$在点$M_0(x_0,y_0,z_0)$处的切平面，$l$为$T$上任意一条过$M_0$的直线，求证：在$S$上存在一条曲线，该曲线在$M_0$处的切线恰好为$l$.
+
+证明：方法1：设直线$l$的方程为$\frac{x-x_0}a=\frac{y-y_0}b=\frac{z-z_0}c$，因$l$在$T$上，其方向向量$(a,b,c)$应满足
+\[(a,b,c)\bm\cdot\mathrm{grad}F(x_0,y_0,z_0)=aF'_x+bF'_y+cF'_z=0,\]
+过直线$l$且与切平面$T$垂直的平面$A$的法向量
+\[\begin{split}
+\bm n&=(a,b,c)\times\mathrm{grad}F(x_0,y_0,z_0)=
+\begin{vmatrix}
+\bm i&\bm j&\bm k\\
+a&b&c\\
+F'_x&F'_y&F'_z
+\end{vmatrix}=(\begin{vmatrix}
+b&c\\
+F'_y&F'_z
+\end{vmatrix},\begin{vmatrix}
+c&a\\
+F'_z&F'_x
+\end{vmatrix},\begin{vmatrix}
+a&b\\
+F'_x&F'_y
+\end{vmatrix})\\
+&=(bF'_z-cF'_y,cF'_x-aF'_z,aF'_y-bF'_x),
+\end{split}\]
+曲面$S$与平面$A$的交线在点$M_0$处的切向量
+\[\begin{split}
+\bm t=&\mathrm{grad}F(x_0,y_0,z_0)\times\bm n=\begin{vmatrix}
+\bm i&\bm j&\bm k\\
+F'_x&F'_y&F'_z\\
+bF'_z-cF'_y&cF'_x-aF'_z&aF'_y-bF'_x
+\end{vmatrix}\\
+=&(\begin{vmatrix}
+F'_y&F'_z\\
+cF'_x-aF'_z&aF'_y-bF'_x
+\end{vmatrix},\begin{vmatrix}
+F'_z&F'_x\\
+aF'_y-bF'_x&bF'_z-cF'_y
+\end{vmatrix},\begin{vmatrix}
+F'_x&F'_y\\
+bF'_z-cF'_y&cF'_x-aF'_z
+\end{vmatrix})\\
+=&[a(F'_y)^2-bF'_xF'_y-cF'_xF'_z+a(F'_z)^2]\bm i-[aF'_xF'_y-b(F'_x)^2-b(F'_z)^2+cF'_yF'_z]\bm j\\
+&+[c(F'_x)^2-aF'_xF'_z-bF'_yF'_z+c(F'_y)^2]\bm k\\
+=&[a(F'_y)^2-F'_x(bF'_y+cF'_z)+a(F'_z)^2]\bm i-[F'_y(aF'_x+cF'_z)-b(F'_x)^2-b(F'_z)^2]\bm j\\
+&+[c(F'_x)^2-F'_z(aF'_x+bF'_y)+c(F'_y)^2]\bm k\\
+=&[a(F'_y)^2+a(F'_x)^2+a(F'_z)^2]\bm i-[-(F'_y)^2-b(F'_x)^2-b(F'_z)^2]\bm j+[c(F'_x)^2+c(F'_z)^2+c(F'_y)^2]\bm k\\
+=&[(F'_x)^2+(F'_z)^2+(F'_y)^2](a,b,c),
+\end{split}\]
+$\therefore\bm t\parallel(a,b,c)$,
+
+$\therefore$曲面$S$与平面$A$的交线在点$M_0$处的切线为$l$，即在$S$上存在一条曲线，该曲线在$M_0$处的切线恰好为$l$.
+
+方法2：设直线$l$的方程为$\frac{x-x_0}a=\frac{y-y_0}b=\frac{z-z_0}c$，因$l$在$T$上，其方向向量$(a,b,c)$应满足
+\[(a,b,c)\perp\mathrm{grad}F(x_0,y_0,z_0),\]
+过直线$l$且与切平面$T$垂直的平面$A$的法向量
+\[\begin{split}
+\bm n&=(a,b,c)\times\mathrm{grad}F(x_0,y_0,z_0),
+\end{split}\]
+曲面$S$与平面$A$的交线在点$M_0$处的切向量
+\[\begin{split}
+\bm t=&[\mathrm{grad}F(x_0,y_0,z_0)\times\bm n]\parallel(a,b,c),
+\end{split}\]
+
+$\therefore$曲面$S$与平面$A$的交线在点$M_0$处的切线为$l$，即在$S$上存在一条曲线，该曲线在$M_0$处的切线恰好为$l$.
+\end{enumerate}
+\end{document}
