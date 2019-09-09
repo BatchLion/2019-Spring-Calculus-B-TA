@@ -1,0 +1,519 @@
+\documentclass[12pt,UTF8]{ctexart}
+\usepackage{ctex,amsmath,amssymb,geometry,fancyhdr,bm,amsfonts
+,mathtools,extarrows,graphicx,url,enumerate,color,float,multicol,,subfig} 
+\allowdisplaybreaks[4]
+% 加入中文支持
+\newcommand\Set[2]{\left\{#1\ \middle\vert\ #2 \right\}}
+\newcommand\Lim[0]{\lim\limits_{n\rightarrow\infty}}
+\newcommand\LIM[2]{\lim\limits_{#1\rightarrow#2}}
+\newcommand\Ser[1]{\sum_{n=#1}^\infty}
+\newcommand{\SER}[2]{\sum_{#1=#2}^\infty}
+\newcommand{\Int}[4]{\int_{#1}^{#2}#3\mathrm d#4}
+\geometry{a4paper,scale=0.80}
+\pagestyle{fancy}
+\rhead{习题10.1\&10.2\&10.3}
+\lhead{基础习题课讲义}
+\chead{微积分B(2)}
+\begin{document}
+\setcounter{section}{13}
+\section{多元函数微分学(1)}
+\noindent
+\subsection{有关说明}
+\begin{itemize}
+\item 基础习题课时间：周一第六大节, 地点: 新水325
+\item 基础习题课公共答疑时间：周二下午三点半到五点，地点：理科楼B203
+\item 基础习题课助教：赵东阳，电话：18811708556，邮箱：dy-zhao14@mails.tsinghua.edu.cn，微信: 18811708556
+\item 基础习题课的教学目标:
+	\begin{itemize}
+		\item使同学掌握课程基本内容
+		\item使同学掌握常见问题的一般解法
+		\item使同学学会正确地书写解答过程
+	\end{itemize}
+\item 基础习题课的主要内容：课后习题
+%，主要包括以下四类题目：
+%	\begin{itemize}
+%		\item我觉得解题过程有一定代表性，同学们需要熟练掌握的题目
+%		\item我觉得解题过程很优雅的题目
+%		\item难度比较大，同学们的反应比较多，比较关心的题目
+%		\item一些包含容易忽略的知识点或者包含我觉得大家以后会常用的知识点的题目
+%	\end{itemize}
+\item 其他要求和说明:
+	\begin{itemize}
+		\item每次课前签到（只是为了统计，不是为了考勤）
+		\item上课的同学可以加入基础习题课微信群
+		\item基础习题课的题目比较基础，注重一般解法和解答过程的书写，如果觉得题目简单可有选择地自愿参加
+		\item这是我做微积分B基础习题课助教的第二个学期，这个学期的情况可能与上个学期不同，我仍然处在一个探索的阶段，有些问题可能会解释不清楚，有些环节的安排可能会不太合理，有些方面可能会考虑不到. 大家如果觉得听不懂，或者觉得什么环节安排得不合理，或者觉得我有什么地方没有考虑到，可以直接指出						\item有问题可随时在微信上给我留言，也可以随时给我打电话，发短信，发邮件
+	\end{itemize}
+\end{itemize}
+\subsection{知识结构}
+\noindent第10章多元函数微分学
+	\begin{enumerate}
+		\item[10.1]多元连续函数
+		\begin{enumerate}
+			\item[10.1.1]多元函数概念
+			\item[10.1.2]二元函数的图形和等值线
+			\item[10.1.3]二元函数的极限
+			\item[10.1.4]连续函数
+				\begin{itemize}
+					\item最大最小值定理
+					\item介值定理
+					\item零点定理
+					\item一致连续性
+				\end{itemize}
+		\end{enumerate}
+		\item[10.2]多元函数的偏导数
+		\begin{enumerate}
+			\item[10.2.1]偏导数
+			\item[10.2.2]高阶偏导数
+		\end{enumerate}
+		\item[10.3]多元函数的微分
+		\begin{enumerate}
+			\item[10.3.1]微分的概念
+			\item[10.3.2]函数可微的充分条件
+			\item[10.3.3]微分在函数近似计算中的应用
+			\item[10.3.4]二元函数的原函数问题
+		\end{enumerate}
+	\end{enumerate}
+\subsection{习题10.1解答}
+\begin{enumerate}
+\item求下列二元函数的定义域.
+
+\begin{tabular}{ll}
+(1)$f(x,y)=\sqrt x\ln(x+y)$；&(2)$f(x,y)=\ln(y-x^2)$；\\
+(3)$f(x,y)=\frac{\mathrm e^{\frac xy}}{x-y}$；&(4)$f(x,y)=\arcsin\frac xy$.
+\end{tabular}
+
+解：(1)由$x\geq0,x+y>0$得该函数的定义域为$\Set{(x,y)}{x\geq0\text{且}x+y>0}$.
+
+(2)由$y-x^2>0$得该函数的定义域为$\Set{(x,y)}{y>x^2}$.
+
+(3)由$y\neq0$且$x-y^2\neq0$得该函数的定义域为$\Set{(x,y)}{x\neq y^2\text{且}y\neq0}$.
+
+(4)由$y\neq0$且$-1\leq\frac xy\leq1$得该函数的定义域为$\Set{(x,y)}{y\neq0\text{且}-1\leq\frac xy\leq1}$.
+\item下列函数在$(0,0)$点的极限是否存在？若存在请求其值.
+
+\begin{tabular}{ll}
+(1)$f(x,y)=\frac{x+y}{|x|+|y|}$；&(2)$f(x,y)=\frac{x^2+y^2}{|x|+|y|}$；\\
+(3)$f(x,y)=\frac{\sin(x^2+y^2)}{x^2+y^2}$；&(4)$f(x,y)=\frac{1-\cos(xy)}{x^2+y^2}$.
+\end{tabular}
+
+解：(1)当点$(x,y)$在第一象限沿直线$y=x$趋于$(0,0)$时$\lim\limits_{\substack{x\rightarrow0^+\\ y\rightarrow0^+}}f(x,y)=\lim\limits_{x\rightarrow0^+}\frac{2x}{2|x|}=1$，
+
+当点$(x,y)$在第二象限沿直线$y=-x$趋于$(0,0)$时$\lim\limits_{\substack{x\rightarrow0^-\\ y\rightarrow0^+}}f(x,y)=\lim\limits_{x\rightarrow0^-}\frac{x-x}{2|x|}=0\neq1$，
+
+故该函数在$(0,0)$点处的极限不存在.
+
+(2)$\because\forall(x,y)\neq(0,0),0<x^2+y^2\leq x^2+y^2+2|x||y|=(|x|+|y|)^2\leq2(x^2+y^2)$
+
+$\therefore\Big|\frac{x^2+y^2}{|x|+|y|}-0\Big|\leq\frac{(|x|+|y|)^2}{|x|+|y|}\leq|x|+|y|\leq\sqrt{2(x^2+y^2)}$
+
+$\therefore\forall\varepsilon>0$可取$\delta=\frac1{\sqrt2}\varepsilon$，当$d((x,y),(0,0))=\sqrt{x^2+y^2}<\delta=\frac1{\sqrt2}\varepsilon$时\\
+$\Big|\frac{x^2+y^2}{|x|+|y|}-0\Big|\leq\sqrt{2(x^2+y^2)}<\varepsilon$
+
+$\therefore\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}f(x,y)=0$.
+
+(3)方法1：$\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}f(x,y)=\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}\frac{\sin(x^2+y^2)}{x^2+y^2}=\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}\frac{x^2+y^2}{x^2+y^2}=1$.
+
+方法2：$\because\forall(x,y)\neq(0,0)(\text{不妨设$0<x^2+y^2<\frac\pi2$}),0<\sin(x^2+y^2)<x^2+y^2<\tan(x^2+y^2)$
+
+$\therefore1<\frac{x^2+y^2}{\sin(x^2+y^2)}<\frac1{\cos(x^2+y^2)}$，即$\cos(x^2+y^2)<\frac{\sin(x^2+y^2)}{x^2+y^2}<1$
+
+$\because\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}\cos(x^2+y^2)=1$
+
+$\therefore\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}f(x,y)=1$.
+
+(4)方法1：$\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}f(x,y)=\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}\frac{1-\cos(xy)}{x^2+y^2}=\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}\frac{2\sin^2(\frac{xy}2)}{x^2+y^2}=\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}\frac{2(\frac{xy}2)^2}{x^2+y^2}=\frac12\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}\frac1{\frac1{x^2}+\frac1{y^2}}=0$.
+
+方法2：$\because\Big|\frac{1-\cos(xy)}{x^2+y^2}-0\Big|=\frac{2\sin^2(\frac{xy}2)}{x^2+y^2}\leq\frac{2(\frac{xy}2)^2}{x^2+y^2}\leq\frac{\frac12[\frac12(x^2+y^2)]^2}{x^2+y^2}=\frac18(x^2+y^2)$,
+
+$\therefore\forall\varepsilon>0$取\textcolor{red}{$\bm{\delta=\sqrt{8\varepsilon}}$}\footnotemark\footnotetext{这里由$2\varepsilon$改成了$\sqrt{8\varepsilon}$.}，当$d((x,y),(0,0))=\sqrt{x^2+y^2}<\delta=\sqrt{8\varepsilon}$时$\Big|\frac{1-\cos(xy)}{x^2+y^2}-0\Big|\\
+\leq\frac18(x^2+y^2)<\varepsilon$,
+
+$\therefore\lim\limits_{\substack{x\rightarrow0\\ y\rightarrow0}}f(x,y)=0$.
+\item设$P_0$是$\mathbb R^2$中一个确定点，在$\mathbb R^2$上定义函数$f(P)=d(P,P_0)$，求证这是一个连续函数.
+
+证明：方法1：$\because\forall Q\in\mathbb R^2,|d(P,P_0)-d(Q,P_0)|<d(P,Q)$
+
+$\therefore\forall\varepsilon>0$取$\delta=\varepsilon$，当$d(P,Q)<\delta=\varepsilon$时$|d(P,P_0)-d(Q,P_0)|<d(P,Q)<\varepsilon$
+
+$\therefore\lim\limits_{P\rightarrow Q}f(P)=f(Q)$
+
+$\therefore$函数$f(P)$是一个连续函数.
+
+方法2：$\because\forall Q\in\mathbb R^2,d(Q,P_0)-d(Q,P)\leq d(P,P_0)\leq d(Q,P_0)+d(Q,P)$
+
+当$P\rightarrow Q$时$\lim\limits_{P\rightarrow Q}d(Q,P)=0$，根据夹逼定理$\lim\limits_{P\rightarrow Q}d(P,P_0)=d(Q,P_0)$，即$\lim\limits_{P\rightarrow Q}f(P)=f(Q)$
+
+$\therefore$函数$f(P)$是一个连续函数.
+\end{enumerate}
+\subsection{习题10.2解答}
+\begin{enumerate}
+\item若$f(x,y)$在点$(x,y)$处连续，能否推出$f(x,y)$在点$(x,y)$的两个偏导数存在？若$f(x,y)$在点$(x,y)$的两个偏导数都存在，能否推出$f(x,y)$在点$(x,y)$处连续？
+
+解：(1)不能. 如函数$f(x,y)=\sqrt{x^2+y^2}$在原点连续，但是下列两个极限都不存在：
+\[\begin{split}
+\lim\limits_{x\rightarrow0}\frac{f(x,0)-f(0,0)}{x}&=\lim\limits_{x\rightarrow0}\frac{\sqrt{x^2}}{x},\\
+\lim\limits_{y\rightarrow0}\frac{f(0,y)-f(0,0)}{y}&=\lim\limits_{y\rightarrow0}\frac{\sqrt{y^2}}{y}.
+\end{split}\]
+所以在原点$\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$都不存在。
+
+(2)不能. 如函数$f(x,y)=\begin{cases}
+1,&y=x^2,x>0,\\
+0,&\text{其他}.
+\end{cases}$ 因为$f(x,0)\equiv0,f(0,y)\equiv0$，故$f(x,y)$在原点的两个偏导数$\frac{\partial f(0,0)}{\partial x}=0,\frac{\partial f(0,0)}{\partial y}=0$. 但$\lim\limits_{(x,y)\rightarrow(0,0)}f(x,y)$不存在（参见教材例10.1.2），所以该函数在原点不连续.
+\item设$z=\sqrt{|xy|}$,求$\frac{\partial z}{\partial x}$.
+
+解：$\because z=\sqrt{|xy|}=\sqrt{|y|}\sqrt{|x|}=\begin{cases}
+\sqrt{|y|}\sqrt{x},&x\geq0,\\
+\sqrt{|y|}\sqrt{-x},&x<0.
+\end{cases}$
+
+$\therefore$当$x>0$时，$\frac{\partial z}{\partial x}=\frac{\sqrt{|y|}}{2\sqrt x}$,
+
+当$x<0$时，$\frac{\partial z}{\partial x}=-\frac{\sqrt{|y|}}{2\sqrt{-x}}$,
+
+当$x=0$时$\lim\limits_{x\rightarrow0^-}\frac{\sqrt{|xy|}}{x}=\lim\limits_{x\rightarrow0^-}-\frac{\sqrt{-x|y|}}{-x}=\lim\limits_{x\rightarrow0^-}-\frac{\sqrt{|y|}}{\sqrt{-x}}=\begin{cases}
+-\infty,&y\neq0\\
+0,&y=0
+\end{cases}$，\\
+$\lim\limits_{x\rightarrow0^+}\frac{\sqrt{|xy|}}{x}=\lim\limits_{x\rightarrow0^+}\frac{x|y|}{x}=\lim\limits_{x\rightarrow0^+}\frac{\sqrt{|y|}}{\sqrt{x}}=\begin{cases}
++\infty,&y\neq0\\
+0,&y=0
+\end{cases}$.
+
+$\therefore\frac{\partial z}{\partial x}=\begin{cases}
+\frac{\sqrt{|y|}}{2\sqrt{x}},&x>0,\\
+\text{不存在},&x=0\text{且}y\neq0\\
+0,&x=0,y=0\\
+-\frac{\sqrt{|y|}}{2\sqrt{-x}},&x<0.
+\end{cases}$
+\item求下列偏导数：
+\\
+(1)$z=\frac{x+y}{x-y}$，求$\frac{\partial z}{\partial x},\frac{\partial z}{\partial y}$；
+\\
+(2)$f(x,y)=\arctan\frac yx$，求$\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$；
+\\
+(3)$z=\cos\frac yx\sin\frac xy$，求$\frac{\partial z(2,\pi)}{\partial x},\frac{\partial z(2,\pi)}{\partial y}$；
+\\
+(4)$z=\arcsin\sqrt{\frac xy}+\frac1{xy}\mathrm e^{\frac yx}$，求$\frac{\partial z(1,2)}{\partial x},\frac{\partial z(1,2)}{\partial y}$；
+\\
+(5)$z=\ln(\sqrt x+\sqrt y)$，求$x\frac{\partial z}{\partial x}+y\frac{\partial z}{\partial y}$；
+\\
+(6)$z=\frac{x-y}{x+y}\ln\frac yx$，求$x\frac{\partial z}{\partial x}+y\frac{\partial z}{\partial y}$；
+\\
+(7)$u=\sqrt{x^2+y^2+z^2}$，求$(\frac{\partial u}{\partial x})^2+(\frac{\partial u}{\partial y})^2+(\frac{\partial u}{\partial z})^2$.
+
+解：(1)$\frac{\partial z}{\partial x}=\frac{x-y-(x+y)}{(x-y)^2}=\frac{-2y}{(x-y)^2},\frac{\partial z}{\partial y}=\frac{x-y+(x+y)}{(x-y)^2}=\frac{2x}{(x-y)^2}$.
+
+(2)$\frac{\partial f}{\partial x}=\frac1{1+\frac{y^2}{x^2}}\frac{-y}{x^2}=\frac{-y}{x^2+y^2},\frac{\partial f}{\partial y}=\frac1{1+\frac{y^2}{x^2}}\frac1x=\frac x{x^2+y^2}(x\neq0)$.
+
+(3)$\frac{\partial z}{\partial x}=-(-\frac y{x^2})\sin\frac yx\sin\frac xy+\frac1y\cos\frac yx\cos\frac xy=\frac y{x^2}\sin\frac yx\sin\frac xy+\frac1y\cos\frac yx\cos\frac xy,\\
+\frac{\partial z}{\partial y}=-\frac1x\sin\frac yx\sin\frac xy-\frac x{y^2}\cos\frac yx\cos\frac xy$,
+
+$\therefore\frac{\partial z(2,\pi)}{\partial x}=\frac\pi4\sin\frac\pi2\sin\frac2\pi+\frac1\pi\cos\frac\pi2\cos\frac2\pi=\frac\pi4\sin\frac2\pi,\\
+\frac{\partial z(2,\pi)}{\partial y}=-\frac12\sin\frac\pi2\sin\frac2\pi-\frac2{\pi^2}\cos\frac\pi2\cos\frac2\pi=-\frac12\sin\frac2\pi$.
+
+(4)$\because\frac{\partial z}{\partial x}=\frac1{\sqrt{1-\frac xy}}\frac1{2\sqrt{xy}}-\frac1{x^2y}\mathrm e^{\frac yx}+\frac1{xy}\mathrm e^{\frac yx}(-\frac y{x^2})=\frac 1{2\sqrt{xy-x^2}}-(\frac1{x^2y}+\frac1{x^3})\mathrm e^{\frac yx},\\
+\frac{\partial z}{\partial y}=\frac1{\sqrt{1-\frac xy}}(-\frac12\sqrt{\frac x{y^3}})-\frac1{xy^2}\mathrm e^{\frac yx}+\frac1{xy}\mathrm e^{\frac yx}\frac1x=-\frac12\sqrt{\frac x{y^3-xy^2}}+(\frac1{x^2y}-\frac1{xy^2})\mathrm e^{\frac yx}$,
+
+$\therefore\frac{\partial z(1,2)}{\partial x}=\frac1{2\sqrt{2-1}}-(\frac1{2}+1)\mathrm e^2=\frac12-\frac32\mathrm e^2,\frac{\partial z(1,2)}{\partial y}=-\frac12\sqrt{\frac1{8-4}}+(\frac12-\frac14)\mathrm e^2=-\frac14+\frac14\mathrm e^2$.
+
+(5)$\because\frac{\partial z}{\partial x}=\frac1{\sqrt x+\sqrt y}\frac1{2\sqrt x},\frac{\partial z}{\partial y}=\frac1{\sqrt x+\sqrt y}\frac1{2\sqrt y}$,
+
+$\therefore x\frac{\partial z}{\partial x}+y\frac{\partial z}{\partial y}=\frac{\sqrt x}{2(\sqrt x+\sqrt y)}+\frac{\sqrt y}{2(\sqrt x+\sqrt y)}=\frac12$.
+
+(6)$\because\frac{\partial z}{\partial x}=\frac{x+y-(x-y)}{(x+y)^2}\ln\frac yx+\frac{x-y}{x+y}\frac xy(-\frac y{x^2})=\frac{2y}{(x+y)^2}\ln\frac yx-\frac1x\frac{x-y}{x+y},\\
+\frac{\partial z}{\partial y}=\frac{-(x+y)-(x-y)}{(x+y)^2}\ln\frac yx+\frac{x-y}{x+y}\frac xy\frac1x=\frac{-2x}{(x+y)^2}\ln\frac yx+\frac1y\frac{x-y}{x+y}$,
+
+$\therefore x\frac{\partial z}{\partial x}+y\frac{\partial z}{\partial y}=\frac{2xy}{(x+y)^2}\ln\frac yx-\frac{x-y}{x+y}+\frac{-2xy}{(x+y)^2}\ln\frac yx+\frac{x-y}{x+y}=0$.
+
+(7)$\because\frac{\partial u}{\partial x}=\frac{2x}{2\sqrt{x^2+y^2+z^2}}=\frac x{\sqrt{x^2+y^2+z^2}},\frac{\partial u}{\partial y}=\frac y{\sqrt{x^2+y^2+z^2}},\frac{\partial u}{\partial z}=\frac z{\sqrt{x^2+y^2+z^2}}$(后两式可根据$x,y,z$的对称性得到),
+
+$\therefore(\frac{\partial u}{\partial x})^2+(\frac{\partial u}{\partial y})^2+(\frac{\partial u}{\partial z})^2=\frac{x^2+y^2+z^2}{x^2+y^2+z^2}=1$.
+\item求下列高阶导数：
+\\
+(1)$z=x+y+\frac1{xy}$，求$\frac{\partial^2z(1,1)}{\partial x\partial y}$；
+\\
+(2)$z=y^{\ln x}$，求$\frac{\partial^2z}{\partial x\partial y}$；
+\\
+(3)$z=\ln(x+\sqrt{x^2+y^2})$，求$\frac{\partial^2z}{\partial x\partial y}$；
+\\
+(4)$z=\ln(\sqrt{(x-a)^2+(y-b)^2})$，求$\frac{\partial^2z}{\partial x^2}+\frac{\partial^2z}{\partial y^2}$；
+\\
+(5)$u=\sqrt{x^2+y^2+z^2}$，求$\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2}$；
+\\
+(6)$z=\sin(xy)$，求$\frac{\partial^3z}{\partial x\partial y^2}$；
+\\
+(7)$f(x,y,z)=xy^2+yz^2+zx^2$，求$\frac{\partial^2f(0,0,1)}{\partial x^2},\frac{\partial^2f(1,0,2)}{\partial x\partial z},\frac{\partial^2f(0,-1,0)}{\partial y\partial z},\frac{\partial^3f(2,0,1)}{\partial x\partial z^2}$.
+
+解：(1)$\because\frac{\partial z}{\partial y}=1-\frac1{xy^2},\frac{\partial^2z}{\partial x\partial y}=\frac1{x^2y^2},\therefore\frac{\partial^2z(1,1)}{\partial x\partial y}=1$.
+
+(2)$\frac{\partial z}{\partial y}=y^{\ln x-1}\ln x,\frac{\partial^2z}{\partial x\partial y}=y^{\ln x-1}\ln y\frac1x\ln x+y^{\ln x-1}\frac1x=\frac{y^{\ln x}}{xy}(\ln y\ln x+1)$.
+
+(3)$\frac{\partial z}{\partial y}=\frac{\frac{2y}{2\sqrt{x^2+y^2}}}{x+\sqrt{x^2+y^2}}=\frac y{\sqrt{x^2+y^2}(x+\sqrt{x^2+y^2})}$,
+
+$\frac{\partial^2z}{\partial x\partial y}=\frac{-y[\frac{2x}{2\sqrt{x^2+y^2}}(x+\sqrt{x^2+y^2})+\sqrt{x^2+y^2}(1+\frac{2x}{2\sqrt{x^2+y^2}})]}{(x^2+y^2)(x+\sqrt{x^2+y^2})^2}=\frac{-y(\frac{x}{\sqrt{x^2+y^2}}+1)(x+\sqrt{x^2+y^2})}{(x^2+y^2)(x+\sqrt{x^2+y^2})^2}\\
+=\frac{-y\frac1{\sqrt{x^2+y^2}}(x+\sqrt{x^2+y^2})^2}{(x^2+y^2)(x+\sqrt{x^2+y^2})^2}=-\frac y{(x^2+y^2)^{\frac32}}$.
+
+(4)$\frac{\partial z}{\partial x}=\frac1{\sqrt{(x-a)^2+(y-b)^2}}\frac{2(x-a)}{2\sqrt{(x-a)^2+(y-b)^2}}=\frac{x-a}{(x-a)^2+(y-b)^2},\\
+\frac{\partial z}{\partial y}=\frac1{\sqrt{(x-a)^2+(y-b)^2}}\frac{2(y-b)}{2\sqrt{(x-a)^2+(y-b)^2}}=\frac{y-b}{(x-a)^2+(y-b)^2}$,
+
+$\frac{\partial^2z}{\partial x^2}=\frac{(x-a)^2+(y-b)^2-(x-a)2(x-a)}{[(x-a)^2+(y-b)^2]^2}=\frac{(y-b)^2-(x-a)^2}{[(x-a)^2+(y-b)^2]^2},\\
+\frac{\partial^2z}{\partial y^2}=\frac{(x-a)^2+(y-b)^2-(y-b)2(y-b)}{[(x-a)^2+(y-b)^2]^2}=\frac{(x-a)^2-(y-b)^2}{[(x-a)^2+(y-b)^2]^2}$,
+
+$\therefore\frac{\partial^2z}{\partial x^2}+\frac{\partial^2z}{\partial y^2}=\frac{(y-b)^2-(x-a)^2}{[(x-a)^2+(y-b)^2]^2}+\frac{(x-a)^2-(y-b)^2}{[(x-a)^2+(y-b)^2]^2}=0$.
+
+(5)$\frac{\partial u}{\partial x}=\frac{2x}{2\sqrt{x^2+y^2+z^2}}=\frac x{\sqrt{x^2+y^2+z^2}},\frac{\partial^2u}{\partial x^2}=\frac{\sqrt{x^2+y^2+z^2}-x\frac{2x}{2\sqrt{x^2+y^2+z^2}}}{x^2+y^2+z^2}=\frac{y^2+z^2}{(x^2+y^2+z^2)^{\frac32}}$,
+
+根据$x,y,z$的对称性可得$\frac{\partial^2u}{\partial y^2}=\frac{x^2+z^2}{(x^2+y^2+z^2)^{\frac32}},\frac{\partial^2u}{\partial z^2}=\frac{x^2+y^2}{(x^2+y^2+z^2)^{\frac32}}$,
+
+$\therefore\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2}=\frac{2(x^2+y^2+z^2)}{(x^2+y^2+z^2)^{\frac32}}=\frac2{\sqrt{x^2+y^2+z^2}}$.
+
+(6)$\frac{\partial z}{\partial y}=x\cos(xy),\frac{\partial^2z}{\partial y^2}=-x^2\sin(xy),\frac{\partial^3z}{\partial x\partial y^2}=-2x\sin(xy)-x^2y\cos(xy)$.
+
+(7)$\because\frac{\partial f}{\partial x}=y^2+2zx,\frac{\partial^2f}{\partial x^2}=2z,\therefore\frac{\partial^2f(0,0,1)}{\partial x^2}=2$,
+
+$\because\frac{\partial f}{\partial z}=2yz+x^2,\frac{\partial^2f}{\partial x\partial z}=2x,\therefore\frac{\partial^2f(1,0,2)}{\partial x\partial z}=2$,
+
+$\because\frac{\partial^2f}{\partial y\partial z}=2z,\therefore\frac{\partial^2f(0,-1,0)}{\partial y\partial z}=0$,
+
+$\because\frac{\partial^2f}{\partial z^2}=2y,\frac{\partial^3f}{\partial x\partial z^2}=0,\therefore\frac{\partial^3f(2,0,1)}{\partial x\partial z^2}=0$.
+\end{enumerate}
+\subsection{习题10.3解答}
+\begin{enumerate}
+\item求下列函数在指定点的全微分：
+\\
+(1)$z=\arctan\frac{x+y}{x-y}$，在任意点$(x,y)$；
+\\
+(2)$z=\ln\sqrt{1+x^2+y^2}$，在点$(1,1)$；
+\\
+(3)$z=\mathrm e^{-(\frac yx-\frac xy)}$，在点$(1,-1)$；
+\\
+(4)$z=\arctan\frac x{1+y^2}$，求$\mathrm dz(1,1)$；
+\\
+(5)$u=(\frac xy)^z$，在任一点$(x,y,z)$.
+
+解：(1)$\frac{\partial z}{\partial x}=\frac1{1+(\frac{x+y}{x-y})^2}\frac{x-y-(x+y)}{(x-y)^2}=\frac{-2y}{(x+y)^2+(x-y)^2}=\frac{-y}{x^2+y^2},\\
+\frac{\partial z}{\partial y}=\frac1{1+(\frac{x+y}{x-y})^2}\frac{x-y+(x+y)}{(x-y)^2}=\frac x{x^2+y^2}$,
+
+当$x\neq y$时，$\frac{\partial z}{\partial x},\frac{\partial z}{\partial y}$均连续，故函数$z$在任意点$(x,y)$可微，\\
+$\mathrm dz(x,y)=\frac{\partial z}{\partial x}\mathrm dx+\frac{\partial z}{\partial y}\mathrm dy=\frac{-y\mathrm dx+x\mathrm dy}{x^2+y^2}$.
+
+(2)$\frac{\partial z}{\partial x}=\frac{\partial\frac12\ln(1+x^2+y^2)}{\partial x}=\frac12\frac{2x}{1+x^2+y^2}=\frac x{1+x^2+y^2},\frac{\partial z}{\partial y}=\frac y{1+x^2+y^2}$,
+
+因为$\frac{\partial z}{\partial x},\frac{\partial z}{\partial y}$在点$(1,1)$\textcolor{red}{\bf及其附近存在且在点$(1,1)$}\footnotemark\footnotetext{这里及后文中类似的标红语句为增加的内容. 根据可微的充分条件，若函数$f(x,y)$在点$(x_0,y_0)$及其附近的偏导数存在，且$\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$在点$(x_0,y_0)$处连续，则$f(x,y)$在点$(x_0,y_0)$处可微. 利用可微的充分条件判断函数在一点处可微应增加偏导数在该点及其附近存在的条件.}处连续，故函数$z$在点$(1,1)$处可微，\\
+$\mathrm dz(1,1)=\frac{\partial z(1,1)}{\partial x}\mathrm dx+\frac{\partial z(1,1)}{\partial y}\mathrm dy=\frac13(\mathrm dx+\mathrm dy)$.
+
+(3)$\frac{\partial z}{\partial x}=\mathrm e^{-(\frac yx-\frac xy)}[-(-\frac y{x^2}-\frac1y)]=\mathrm e^{-(\frac yx-\frac xy)}(\frac y{x^2}+\frac1y)],\frac{\partial z}{\partial y}=\mathrm e^{-(\frac yx-\frac xy)}(-\frac1x-\frac x{y^2})$,
+
+因为$\frac{\partial z}{\partial x},\frac{\partial z}{\partial y}$在点$(1,-1)$\textcolor{red}{\bf及其附近存在且在点$(1,-1)$}处连续，故函数$z$在点$(1,-1)$可微，\\
+$\mathrm dz(1,-1)=\frac{\partial z(1,-1)}{\partial x}\mathrm dx+\frac{\partial z(1,-1)}{\partial y}\mathrm dy=-2\mathrm dx-2\mathrm dy$.
+
+(4)$\frac{\partial z}{\partial x}=\frac1{1+(\frac x{1+y^2})^2}\frac1{1+y^2}=\frac{1+y^2}{x^2+(1+y^2)^2},\frac{\partial z}{\partial x}=\frac1{1+(\frac x{1+y^2})^2}\frac{-2xy}{(1+y^2)^2}=\frac{-2xy}{x^2+(1+y^2)^2}$,
+
+因为$\frac{\partial z}{\partial x},\frac{\partial z}{\partial y}$在点$(1,1)$\textcolor{red}{\bf及其附近存在且在点$(1,1)$}处连续，故函数$z$在点$(1,1)$可微，\\
+$\mathrm dz(1,1)=\frac{\partial z(1,1)}{\partial x}\mathrm dx+\frac{\partial z(1,1)}{\partial y}\mathrm dy=\frac25\mathrm dx-\frac25\mathrm dy$.
+
+(5)$\frac{\partial u}{\partial x}=\frac zy(\frac xy)^{z-1},\frac{\partial u}{\partial y}=-\frac zx(\frac yx)^{-z-1},\frac{\partial u}{\partial z}=(\frac xy)^z\ln\frac xy$,
+
+当$xy>0$时，$\frac{\partial u}{\partial x},\frac{\partial u}{\partial y},\frac{\partial u}{\partial z}$均连续，故函数$z$在任一点$(x,y,z)$可微，\\
+$\mathrm dz=\frac{\partial u}{\partial x}\mathrm dx+\frac{\partial u}{\partial y}\mathrm dy+\frac{\partial u}{\partial z}\mathrm dz=\frac zy(\frac xy)^{z-1}\mathrm dx-\frac zx(\frac yx)^{-z-1}\mathrm dy+(\frac xy)^z\ln\frac xy\mathrm dz$.
+\item试证明下列函数在$(0,0)$点不可微：\\
+(1)$f(x,y)=\sqrt x\cos y$；\\
+(2)$f(x,y)=\begin{cases}
+\frac{2xy}{\sqrt{x^2+y^2}},&(x,y)\neq(0,0),\\
+0,&(x,y)=(0,0).
+\end{cases}$
+
+解：(1)\textcolor{red}{\bf【不太好的做法：】}$\because\frac{\partial f}{\partial x}=\frac{\cos y}{2\sqrt x},\frac{\partial f}{\partial y}=-\sqrt x\sin y$,
+
+$\therefore\frac{\partial f}{\partial x}$在点$(0,0)$不存在，故函数$f(x,y)$在点$(0,0)$不可微.
+
+\textcolor{red}{\bf【比较好的做法：】}假设$f(x,y)$在点$(0,0)$处可微，则$\frac{\partial f(0,0)}{\partial x}$存在,
+
+$\because f(x,y)=\sqrt x\cos y$,
+
+$\therefore x\geq0$,
+
+$\because\lim\limits_{x\rightarrow0^+}\frac{f(x,0)-f(0,0)}{x-0}=\lim\limits_{x\rightarrow0^+}\frac{\sqrt x-0}{x-0}=+\infty$,
+
+$\therefore\frac{\partial f}{\partial x}$在点$(0,0)$不存在，故函数$f(x,y)$在点$(0,0)$不可微.
+
+(2)\textcolor{red}{\bf【不太好的做法：】}$\because f(x,0)=0,f(0,y)=0$,
+
+$\therefore\frac{\partial f(0,0)}{\partial x}=0,\frac{\partial f(0,0)}{\partial y}=0$,
+
+$\lim\limits_{(\Delta x,\Delta y)\rightarrow(0,0)}\frac{f(0+\Delta x,0+\Delta y)-f(0,0)-[\frac{\partial f(0,0)}{\partial x}\Delta x+\frac{\partial f(0,0)}{\partial y}\Delta y]}{\sqrt{(\Delta x)^2+(\Delta y)^2}}\\
+=\lim\limits_{(x,y)\rightarrow(0,0)}\frac{f(x,y)-f(0,0)-[\frac{\partial f(0,0)}{\partial x}x+\frac{\partial f(0,0)}{\partial y}y]}{\sqrt{x^2+y^2}}\\
+=\lim\limits_{(x,y)\rightarrow(0,0)}\frac{f(x,y)}{\sqrt{x^2+y^2}}=\lim\limits_{(x,y)\rightarrow(0,0)}\frac{2xy}{x^2+y^2}$,(*)
+
+将$y=kx$代入上式得$\lim\limits_{x\rightarrow0}\frac{2kx^2}{x^2+k^2x^2}=\frac{2k}{1+k^2}$，该极限随$k$的取值不同而变化，故极限(*)不存在，故函数$f(x,y)$在点$(0,0)$不可微.
+
+\textcolor{red}{\bf【比较好的做法：】}$\because|\frac{2xy}{\sqrt{x^2+y^2}}-f(0,0)|=\frac{|2xy|}{\sqrt{x^2+y^2}}\leq\frac{2|x||y|}{|x|}=2|y|$,
+
+又$\because\LIM{(x,y)}{(0,0)}2|y|=0$,
+
+$\therefore\LIM{(x,y)}{(0,0)}\frac{2xy}{\sqrt{x^2+y^2}}=f(0,0)$,
+
+$\therefore f(x,y)$在点$(0,0)$处连续,
+
+$\because f(x,0)=0,f(0,y)=0$
+
+$\therefore\frac{\partial f(0,0)}{\partial x}=0,\frac{\partial f(0,0)}{\partial y}=0$
+
+$\therefore$若$f(x,y)$在点$(0,0)$处可微，则$\mathrm df(0,0)=0$，且
+
+$\LIM{(x,y)}{(0,0)}\frac{f(x,y)-f(0,0)-\mathrm df(0,0)}{\sqrt{x^2+y^2}}=\LIM{(x,y)}{(0,0)}\frac{2xy}{x^2+y^2}=0$,
+
+$\because\lim\limits_{\substack{x\rightarrow0\\ y=x}}\frac{2xy}{x^2+y^2}=\lim\limits_{\substack{x\rightarrow0}}\frac{2x^2}{x^2+x^2}=1\neq0$,
+
+$\therefore\LIM{(x,y)}{(0,0)}\frac{f(x,y)-f(0,0)-\mathrm df(0,0)}{\sqrt{x^2+y^2}}\neq0$，矛盾，
+
+$\therefore$函数$f(x,y)$在点$(0,0)$不可微.
+%\begin{enumerate}
+%\item[]
+%\item[]
+%\end{enumerate}
+\item已知函数$g(x),h(x)$分别在区间$[x_0,x_1]$与$[y_0,y_1]$上连续，试证函数
+\[f(x,y)=\int_{x_0}^xg(s)\mathrm ds\int_{y_0}^yh(t)\mathrm dt\]
+在点$(x,y)$可微，其中$(x,y)\in D=\Set{(x,y)}{x_0\leq x\leq x_1,y_0\leq y\leq y_1}$.
+
+证明：方法1：$\because g(x),h(x)$分别在区间$[x_0,x_1]$与$[y_0,y_1]$上连续,
+
+$\therefore\frac{\partial f(x,y)}{\partial x}=g(x)\int_{y_0}^yh(t)\mathrm dt,\frac{\partial f(x,y)}{\partial y}=h(y)\int_{x_0}^xg(s)\mathrm ds$且$\int_{x_0}^xg(s)\mathrm ds$和$\int_{y_0}^yh(t)\mathrm dt$分别在区间\\
+$[x_0,x_1]$与$[y_0,y_1]$上连续,
+
+$\therefore\frac{\partial f(x,y)}{\partial x},\frac{\partial f(x,y)}{\partial y}$在$D$中任意一点$(x,y)$连续,
+
+$\therefore$函数$f(x,y)$在$D$中任意一点$(x,y)$可微.
+
+方法2：$\because g(x),h(x)$分别在区间$[x_0,x_1]$与$[y_0,y_1]$上连续
+
+$\therefore\frac{\partial f(x,y)}{\partial x}=g(x)\int_{y_0}^yh(t)\mathrm dt,\frac{\partial f(x,y)}{\partial y}=h(y)\int_{x_0}^xg(s)\mathrm ds$
+\[\begin{split}
+\therefore&f(x+\Delta x,y+\Delta y)-f(x,y)-[\frac{\partial f(x,y)}{\partial x}\Delta x+\frac{\partial f(x,y)}{\partial y}\Delta y]\\
+=&\int_{x_0}^{x+\Delta x}g(s)\mathrm ds\int_{y_0}^{y+\Delta y}h(t)\mathrm dt-\int_{x_0}^xg(s)\mathrm ds\int_{y_0}^yh(t)\mathrm dt-[g(x)\Delta x\int_{y_0}^yh(t)\mathrm dt+h(y)\Delta y\int_{x_0}^xg(s)\mathrm ds]\\
+=&[\Int{x_0}{x}{g(s)}{s}+\Int{x}{x+\Delta x}{g(s)}{s}][\Int{y_0}{y}{h(t)}{t}+\Int{y}{y+\Delta y}{h(t)}{t}]-\Int{x_0}{x}{g(s)}{s}\Int{y_0}{y}{h(t)}{t}\\
+&\hspace{8cm}-[g(x)\Delta x\Int{y_0}{y}{h(t)}{t}+h(y)\Delta y\Int{x_0}{x}{g(s)}{s}]\\
+=&\Int{x_0}{x}{g(s)}{s}\Int{y}{y+\Delta y}{h(t)}{t}+\Int{y_0}{y}{h(t)}{t}\Int{x}{x+\Delta x}{g(s)}{s}+\Int{x}{x+\Delta x}{g(s)}{s}\Int{y}{y+\Delta y}{h(t)}{t}\\
+&\hspace{8cm}-[g(x)\Delta x\Int{y_0}{y}{h(t)}{t}+h(y)\Delta y\Int{x_0}{x}{g(s)}{s}]\\
+=&h(y+\lambda_2\Delta y)\Delta y\Int{x_0}{x}{g(s)}{s}+g(x+\lambda_1\Delta x)\Delta x\Int{y_0}{y}{h(t)}{t}+g(x+\lambda_1\Delta x)h(y+\lambda_2\Delta y)\Delta x\Delta y\\
+&\hspace{8cm}-[g(x)\Delta x\Int{y_0}{y}{h(t)}{t}+h(y)\Delta y\Int{x_0}{x}{g(s)}{s}]\\
+=&[g(x+\lambda_1\Delta x)-g(x)]\Delta x\Int{y_0}{y}{h(t)}{t}+[h(y+\lambda_2\Delta y)-h(y)]\Delta y\Int{x_0}{x}{g(s)}{s}\\
+&\hspace{7cm}+g(x+\lambda_1\Delta x)h(y+\lambda_2\Delta y)\Delta x\Delta y,0<\lambda_{1,2}<1
+\end{split}\]
+$\therefore$
+\[\begin{split}
+&\Big|\frac{f(x+\Delta x,y+\Delta y)-f(x,y)-[\frac{\partial f(x,y)}{\partial x}\Delta x+\frac{\partial f(x,y)}{\partial y}\Delta y]}{\sqrt{(\Delta x)^2+(\Delta y)^2}}\Big|\\
+=&\Big|\frac{[g(x+\lambda_1\Delta x)-g(x)]\Delta x\Int{y_0}{y}{h(t)}{t}}{\sqrt{(\Delta x)^2+(\Delta y)^2}}+\frac{[h(y+\lambda_2\Delta y)-h(y)]\Delta y\Int{x_0}{x}{g(s)}{s}}{\sqrt{(\Delta x)^2+(\Delta y)^2}}\\
+&\hspace{7.2cm}+\frac{g(x+\lambda_1\Delta x)h(y+\lambda_2\Delta y)\Delta x\Delta y}{\sqrt{(\Delta x)^2+(\Delta y)^2}}\Big|\\
+\leq&\frac{\big|g(x+\lambda_1\Delta x)-g(x)\big|\big|\Delta x\big|\big|\Int{y_0}{y}{h(t)}{t}\big|}{\sqrt{(\Delta x)^2+(\Delta y)^2}}+\frac{\big|h(y+\lambda_2\Delta y)-h(y)\big|\big|\Delta y\big|\big|\Int{x_0}{x}{g(s)}{s}\big|}{\sqrt{(\Delta x)^2+(\Delta y)^2}}\\
+&\hspace{7.2cm}+\frac{|g(x+\lambda_1\Delta x)||h(y+\lambda_2\Delta y)||\Delta x||\Delta y|}{\sqrt{(\Delta x)^2+(\Delta y)^2}}\\
+\leq&\frac{\big|g(x+\lambda_1\Delta x)-g(x)\big|\big|\Delta x\big|\big|\Int{y_0}{y}{h(t)}{t}\big|}{\big|\Delta x\big|}+\frac{\big|h(y+\lambda_2\Delta y)-h(y)\big|\big|\Delta y\big|\big|\Int{x_0}{x}{g(s)}{s}\big|}{\big|\Delta y\big|}\\
+&\hspace{7.2cm}+\frac{|g(x+\lambda_1\Delta x)||h(y+\lambda_2\Delta y)||\Delta x||\Delta y|}{|\Delta x|}\\
+=&\big|g(x+\lambda_1\Delta x)-g(x)\big|\big|\Int{y_0}{y}{h(t)}{t}\big|+\big|h(y+\lambda_2\Delta y)-h(y)\big|\big|\Int{x_0}{x}{g(s)}{s}\big|\\
+&\hspace{7.2cm}+|g(x+\lambda_1\Delta x)||h(y+\lambda_2\Delta y)||\Delta y|
+\end{split}\]
+$\because$
+\[\begin{split}
+&\LIM{(\Delta x,\Delta y)}{(0,0)}[\big|g(x+\lambda_1\Delta x)-g(x)\big|\big|\Int{y_0}{y}{h(t)}{t}\big|+\big|h(y+\lambda_2\Delta y)-h(y)\big|\big|\Int{x_0}{x}{g(s)}{s}\big|\\
+&\hspace{8cm}+|g(x+\lambda_1\Delta x)||h(y+\lambda_2\Delta y)||\Delta y|]\\
+=&\lim\limits_{\substack{\Delta x\rightarrow0\\\Delta y\rightarrow0}}[\big|g(x+\lambda_1\Delta x)-g(x)\big|\big|\Int{y_0}{y}{h(t)}{t}\big|+\big|h(y+\lambda_2\Delta y)-h(y)\big|\big|\Int{x_0}{x}{g(s)}{s}\big|\\
+&\hspace{8cm}+|g(x+\lambda_1\Delta x)||h(y+\lambda_2\Delta y)||\Delta y|]=0
+\end{split}\]
+$\therefore$
+\[\frac{f(x+\Delta x,y+\Delta y)-f(x,y)-[\frac{\partial f(x,y)}{\partial x}\Delta x+\frac{\partial f(x,y)}{\partial y}\Delta y]}{\sqrt{(\Delta x)^2+(\Delta y)^2}}\rightarrow0,(\Delta x,\Delta y)\rightarrow(0,0)\]
+$\therefore$函数$f(x,y)$在点$(x,y)$可微.
+\item用函数微分计算下列数值的近似值：\\
+(1)$\sqrt{1.02^2+1.97^2}$；\quad\quad(2)$0.97^{1.05}$.
+
+解：(1)令$f(x,y)=\sqrt{x^2+y^2}$,
+
+$\because\frac{\partial f}{\partial x}=\frac{2x}{2\sqrt{x^2+y^2}}=\frac x{\sqrt{x^2+y^2}},\frac{\partial f}{\partial y}=\frac{2y}{2\sqrt{x^2+y^2}}=\frac y{\sqrt{x^2+y^2}}$在点$(1,2)$\textcolor{red}{\bf及其附近存在且在点$(1,2)$}处连续，故$f(x,y)$在点$(1,2)$可微，
+
+$\therefore\sqrt{1.02^2+1.97^2}=f(1.02,1.97)\approx f(1,2)+0.02\frac{\partial f(1,2)}{\partial x}+(-0.03)\frac{\partial f(1,2)}{\partial y}\\
+=\sqrt5+0.02\times\frac1{\sqrt5}-0.03\times\frac2{\sqrt5}=\frac{5-0.04}{\sqrt5}\approx2.2182$.
+
+(2)令$f(x,y)=x^y$,
+
+$\because\frac{\partial f}{\partial x}=yx^{y-1},\frac{\partial f}{\partial y}=x^y\ln x$在点$(1,1)$\textcolor{red}{\bf及其附近存在且在点$(1,1)$}处连续，
+
+$\therefore0.97^{1.05}=f(0.97,1.05)\approx f(1,1)+(-0.03)\frac{\partial f(1,1)}{\partial x}+0.05\frac{\partial f(1,1)}{\partial y}\\
+=1-0.03\times1+0.05\times0=0.97$.
+\item设二元函数$z(x,y)$满足方程$\frac{\partial^2z}{\partial x\partial y}=x+y$，并且$z(x,0)=x,z(0,y)=y^2$. 试求$z(x,y)$.
+
+解：方法1：$\because\frac{\partial^2z}{\partial x\partial y}=x+y$,
+
+$\therefore\int\frac{\partial^2z}{\partial x\partial y}\mathrm dx=\int(x+y)\mathrm dx=\frac12x^2+xy+C_1(y)=\frac{\partial z}{\partial y}+C_1(y)$,
+
+$\therefore$可设$\frac{\partial z}{\partial y}=\frac12x^2+xy+C(y)$，其中$C(y)$是与$x$无关的$y$的函数，
+
+$\because z(0,y)=y^2$,
+
+$\therefore\frac{\partial z(0,y)}{\partial y}=2y=C(y)$,
+
+$\therefore\frac{\partial z}{\partial y}=\frac12x^2+xy+2y$,
+
+$\therefore\int\frac{\partial z}{\partial y}\mathrm dy=\int(\frac12x^2+xy+2y)\mathrm dy=\frac12x^2y+\frac12xy^2+y^2+C_3(x)=z(x,y)+C_4(x)$,
+
+$\therefore$可设$z(x,y)=\int(\frac12x^2+xy+2y)\mathrm dy+C^*(x)=\frac12x^2y+\frac12xy^2+y^2+C^*(x)$，其中$C^*(x)$是与$y$无关的$x$的函数，
+
+$\because z(x,0)=x=C^*(x)$,
+
+$\therefore z(x,y)=\frac12x^2y+\frac12xy^2+y^2+x$.
+
+方法2：$\because\frac{\partial^2z}{\partial x\partial y}=x+y$,
+
+$\therefore\int\frac{\partial^2z}{\partial x\partial y}\mathrm dx=\int(x+y)\mathrm dx=\frac12x^2+xy+C_1(y)=\frac{\partial z}{\partial y}+C_2(y)$,
+
+$\therefore$可设$\frac{\partial z}{\partial y}=\frac12x^2+xy+C(y)$，其中$C(y)$是与$x$无关的$y$的函数，
+
+$\therefore\int\frac{\partial z}{\partial y}\mathrm dy=\frac12x^2y+\frac12xy^2+\int C(y)\mathrm dy=z(x,y)+C_3(x)$,
+
+$\therefore$可设$z(x,y)=\frac12x^2y+\frac12xy^2+F(y)+C^*(x)$，其中$F(y)$是$C(y)$的一个与$x$无关的原函数，$C^*(x)$是与$y$无关的$x$的函数，
+
+$\because z(0,y)=y^2,z(x,0)=x$,
+
+$\therefore F(y)+C^*(0)=y^2,F(0)+C^*(x)=x$,
+
+$\therefore F(y)=y^2-C^*(0),C^*(x)=x-F(0)$，且$F(0)+C^*(0)=0$,
+
+$\therefore z(x,y)=\frac12x^2y+\frac12xy^2+y^2+x-[F(0)+C^*(0)]=\frac12x^2y+\frac12xy^2+y^2+x$.
+\item求$y^2\mathrm e^{x+y}(\mathrm dx+\mathrm dy)+2y\mathrm e^{x+y}\mathrm dy$的原函数.
+
+解：方法1：设$f(x,y)$是$y^2\mathrm e^{x+y}(\mathrm dx+\mathrm dy)+2y\mathrm e^{x+y}\mathrm dy=y^2\mathrm e^{x+y}\mathrm dx+(y^2+2y)\mathrm e^{x+y}\mathrm dy$的原函数，则$\frac{\partial f}{\partial x}=y^2\mathrm e^{x+y}$,
+
+$\therefore\int\frac{\partial f}{\partial x}\mathrm dx=\int y^2\mathrm e^{x+y}\mathrm dx=y^2\mathrm e^y\mathrm e^x+C_1(y)=f(x,y)+C_2(y)$,
+
+$\therefore f(x,y)=y^2\mathrm e^y\mathrm e^x+C(y)$,
+
+$\therefore\frac{\partial f}{\partial y}=2y\mathrm e^y\mathrm e^x+y^2\mathrm e^y\mathrm e^x+C'(y)=(y^2+2y)\mathrm e^{x+y}+C'(y)$,
+
+又$\because\frac{\partial f}{\partial y}=(y^2+2y)\mathrm e^{x+y}$,
+
+$\therefore C'(y)=0$,
+
+$\therefore C(y)=C$,
+
+$\therefore f(x,y)=y^2\mathrm e^{x+y}+C$.
+
+方法2：设$f(x,y)$是$y^2\mathrm e^{x+y}(\mathrm dx+\mathrm dy)+2y\mathrm e^{x+y}\mathrm dy=y^2\mathrm e^{x+y}\mathrm dx+(y^2+2y)\mathrm e^{x+y}\mathrm dy$的原函数，则$\frac{\partial f}{\partial y}=(y^2+2y)\mathrm e^{x+y}$,
+
+$\therefore\int\frac{\partial f}{\partial y}\mathrm dy=\int(y^2+2y)\mathrm e^{x+y}\mathrm dy=\mathrm e^x\int(y^2+2y)\mathrm d\mathrm e^y=\mathrm e^x[(y^2+2y)\mathrm e^y-\int\mathrm e^y\mathrm d(y^2+2y)]\\
+=\mathrm e^x[(y^2+2y)\mathrm e^y-\int\mathrm e^y(2y+2)\mathrm dy]=\mathrm e^x[(y^2+2y)\mathrm e^y-\int(2y+2)\mathrm d\mathrm e^y]\\
+=\mathrm e^x[(y^2+2y)\mathrm e^y-(2y+2)\mathrm e^y+\int\mathrm e^y\mathrm d(2y+2)]=\mathrm e^x[(y^2+2y)\mathrm e^y-(2y+2)\mathrm e^y+2\int\mathrm e^y\mathrm dy]\\
+=\mathrm e^x[(y^2+2y)\mathrm e^y-(2y+2)\mathrm e^y+2\mathrm e^y]=y^2\mathrm e^{x+y}+C_1(x)=f(x,y)+C_2(x)$,
+
+$\therefore f(x,y)=y^2\mathrm e^{x+y}+C(x)$,
+
+$\therefore\frac{\partial f}{\partial x}=y^2\mathrm e^{x+y}+C'(x)$,
+
+又$\because\frac{\partial f}{\partial x}=y^2\mathrm e^{x+y}$,
+
+$\therefore C'(x)=0$,
+
+$\therefore C(x)=C$,
+
+$\therefore f(x,y)=y^2\mathrm e^{x+y}+C$.
+\end{enumerate}
+\end{document}
