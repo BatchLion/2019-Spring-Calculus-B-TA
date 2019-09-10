@@ -1,0 +1,260 @@
+\documentclass[12pt,UTF8]{ctexart}
+\usepackage{ctex,amsmath,amssymb,geometry,fancyhdr,bm,amsfonts,mathtools,extarrows,graphicx,url,enumerate,xcolor,float,multicol,wasysym}
+\usepackage{subfigure}
+
+\allowdisplaybreaks[4]
+% 加入中文支持
+\newcommand\Set[2]{\left\{#1\ \middle\vert\ #2 \right\}}
+\newcommand\Lim[0]{\lim\limits_{n\rightarrow\infty}}
+\newcommand\LIM[2]{\lim\limits_{#1\rightarrow#2}}
+\newcommand\Ser[1]{\sum_{n=#1}^\infty}
+\newcommand{\SER}[2]{\sum_{#1=#2}^\infty}
+\newcommand{\Int}[4]{\varint\nolimits_{#1}^{#2}#3\mathrm d#4}
+\newcommand{\aIInt}[1]{\iint\limits_{#1}}
+\newcommand{\IInt}[3]{\iint\limits_{#1}#2\mathrm d#3}
+\newcommand{\varIInt}[4]{\iint\limits_{#1}#2\mathrm d#3\mathrm d#4}
+\newcommand{\IIInt}[3]{\iiint\limits_{#1}#2\mathrm d#3}
+\newcommand{\varIIInt}[5]{\iiint\limits_{#1}#2\mathrm d#3\mathrm d#4\mathrm d#5}
+\newcommand{\LInt}[3]{\varint\nolimits_{#1}#2\mathrm d#3}
+\newcommand{\LOInt}[3]{\varoint\nolimits_{#1}#2\mathrm d#3}
+\newcommand{\LLInt}[4]{\varint\nolimits_{#1}\nolimits^{#2}#3\mathrm d#4}
+\newcommand{\BLInt}[2]{\varint\nolimits_{#1}#2}
+\newcommand{\varBLInt}[3]{\varint\nolimits_{#1}\nolimits^{#2}#3}
+\newcommand{\BLOInt}[2]{\varoint\nolimits_{#1}#2}
+\newcommand{\SIInt}[3]{\iint\limits_{#1}#2\mathrm d#3}
+\newcommand{\md}[1]{\mathrm d#1}
+\newcommand{\BSIInt}[2]{\iint\limits_{#1}#2}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ppx}[1]{\frac{\partial #1}{\partial x}}
+\newcommand{\ppy}[1]{\frac{\partial #1}{\partial y}}
+\newcommand{\ppz}[1]{\frac{\partial #1}{\partial z}}
+\newcommand{\varppx}[1]{\frac{\partial}{\partial x} #1}
+\newcommand{\varppy}[1]{\frac{\partial}{\partial y} #1}
+\newcommand{\varppz}[1]{\frac{\partial}{\partial z} #1}
+\newcommand{\BSOIInt}[2]{\oiint\limits_{#1}#2}
+\newcommand{\me}[0]{\mathrm e}
+\newcommand{\m}[0]{\mathrm }
+\geometry{a4paper,scale=0.80}
+\pagestyle{fancy}
+\rhead{第13章补充题}
+\lhead{基础习题课讲义}
+\chead{微积分B(2)}
+\begin{document}
+\def\thesection{25C}
+\section{第13章补充题}
+\subsection{第13章补充题解答}
+\begin{enumerate}
+\item设$D$为$y=x,y=4x,xy=1,xy=4$所围成的区域，$F$是一元连续可微函数，$f=F'$. 求证：$\BLOInt{\partial D}{\frac{F(xy)}y}\md y=\ln2\Int14{f(v)}v$.
+
+证明：$\because D$是第一象限内部的区域，$x$轴不穿过$D$，且$F\in C^1$,
+
+$\therefore\frac{F(xy)}y\in C^1(D)$,
+
+$\therefore\BLOInt{\partial D}{\frac{F(xy)}y}\md y=\varIInt D{\varppx{[\frac{F(xy)}y}-\ppy0]}xy=\varIInt D{F'(xy)}xy$,
+
+设$\begin{cases}u=\frac yx,\\v=xy,\end{cases}$则$D=\Set{(u,v)}{1\leqslant u\leqslant 4,1\leqslant v\leqslant 4}$,
+
+$\frac{\m D(u,v)}{\m D(x,y)}=\begin{vmatrix}-\frac y{x^2}&\frac1x\\y&x\end{vmatrix}=-\frac yx-\frac yx=-2u$,
+
+$\therefore\varIInt D{F'(xy)}xy=\varIInt D{f(xy)}xy=\varIInt D{f(v)\frac1{|\frac{\m D(u,v)}{\m D(x,y)}|}}uv=\varIInt D{f(v)\frac1{2u}}uv=\Int14{\frac1{2u}}u\Int14{f(v)}v\\
+=\frac12\ln u\big|_1^4\Int14{f(v)}v=\ln2\Int14{f(v)}v$.
+
+\item设$D$是平面上的有界区域，函数$u(x,y)$与$v(x,y)$在$\bar D$上存在二阶连续偏导数. \\
+求证:$\BLOInt{\partial D}{\begin{vmatrix}\frac{\partial u}{\partial\bm n}&\frac{\partial v}{\partial\bm n}\\ u&v\end{vmatrix}\md l}=\IInt D{\begin{vmatrix}\Delta u&\Delta v\\ u&v\end{vmatrix}}\sigma$.
+
+证明：$\because u(x,y),v(x,y)\in C^2(D)$,
+
+方法1：$\therefore\pp u{\bm n}=\bm n\bm\cdot\text{grad}u,\pp v{\bm n}=\bm n\bm\cdot\text{grad}v$,
+
+$\therefore\BLOInt{\partial D}{\begin{vmatrix}\bm n\bm\cdot\text{grad}u&\bm n\bm\cdot\text{grad}v\\ u&v\end{vmatrix}\md l}=\BLOInt{\partial D}{[v(\bm n\bm\cdot\text{grad}u)-u(\bm n\bm\cdot\text{grad}v)]\md l}\\
+=\BLOInt{\partial D}{(v\text{grad}u-u\text{grad}v)\bm\cdot\bm n\md l}=\BLOInt{\partial D}{(v\pp ux-u\pp vx,v\pp uy-u\pp vy)\bm\cdot\bm n\md l}\\
+=\IInt D{[\varppx{(v\pp ux-u\pp vx)}+\varppy{(v\pp uy-u\pp vy)}]}\sigma\\
+=\IInt D{[\pp vx\pp ux+v\frac{\partial^2u}{\partial x^2}-\pp ux\pp vx-u\frac{\partial^2v}{\partial x^2}+\pp vy\pp uy+v\frac{\partial^2u}{\partial y^2}-\pp uy\pp vy-u\frac{\partial^2v}{\partial y^2}]}\sigma\\
+=\IInt D{(v\frac{\partial^2u}{\partial x^2}-u\frac{\partial^2v}{\partial x^2}+v\frac{\partial^2u}{\partial y^2}-u\frac{\partial^2v}{\partial y^2})}\sigma=\IInt D{[v(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2})-u(\frac{\partial^2v}{\partial x^2}+\frac{\partial^2v}{\partial y^2})]}\sigma\\
+=\IInt D{[v\Delta u-u\Delta v]}\sigma=\IInt D{\begin{vmatrix}\Delta u&\Delta v\\ u&v\end{vmatrix}}\sigma$.
+
+方法2：$\therefore\pp u{\bm n}=\bm\nabla u\bm\cdot\bm n,\pp v{\bm n}=\bm\nabla v\bm\cdot\bm n$,
+
+$\therefore\BLOInt{\partial D}{\begin{vmatrix}\frac{\partial u}{\partial\bm n}&\frac{\partial v}{\partial\bm n}\\ u&v\end{vmatrix}\md l}=\BLOInt{\partial D}{(v\pp u{\bm n}-u\pp v{\bm n})\md l}=\BLOInt{\partial D}{(v\bm\nabla u\bm\cdot\bm n-u\bm\nabla v\bm\cdot\bm n)\md l}\\
+=\BLOInt{\partial D}{(v\bm\nabla u-u\bm\nabla v)\bm\cdot\bm n\md l}=\IInt D{\bm\nabla\bm\cdot(v\bm\nabla u-u\bm\nabla v)}\sigma\\
+=\IInt D{(\bm\nabla v\bm\cdot\bm\nabla u+v\bm\nabla\bm\cdot\bm\nabla u-\bm\nabla u\bm\cdot\bm\nabla v-u\bm\nabla\bm\cdot\bm\nabla v)}\sigma\\
+=\IInt D{(v\bm\nabla\bm\cdot\bm\nabla u-u\bm\nabla\bm\cdot\bm\nabla v)}\sigma=\IInt D{(v\Delta u-u\Delta v)}\sigma=\IInt D{\begin{vmatrix}\Delta u&\Delta v\\ u&v\end{vmatrix}}\sigma$.
+\item计算$I=\BSOIInt S{\frac{\cos\widehat{\bm r\bm n}}{r^2}\md S}$，其中$S$为任意光滑闭曲面，$\bm n$为$S$的外单位法向量，$M_0(x_0,y_0,z_0)$是$S$内的一个确定点，$\bm r$是连接$M_0(x_0,y_0,z_0)$和$S$上点$M(x,y,z)$的向量，$r$是$\bm r$的长度.
+
+解：$I=\BSOIInt S{\frac{\cos\widehat{\bm r\bm n}}{r^2}\md S}=\BSOIInt S{\frac{\bm r\cdot\bm n}{r^3}\md S}$,
+
+取$S_1:x^2+y^2+z^2=a^2$, 其中$a$足够小，使得$S_1$完全包含在$S$内，$S_1$的外侧为正，设$S$和$S_{1-}$围成的区域为$\Omega$, 设$S_1$围成的区域为$\Omega_1$,
+
+$\because\frac{\bm r}{r^3}=\frac1{r^3}(x-x_0,y-y_0,z-z_0)\in C^1(\Omega),\ r=\sqrt{(x-x_0)^2+(y-y_0)^2+(z-z_0)^2}$,
+
+又$\because\ppx r=\frac{2(x-x_0)}{2\sqrt{(x-x_0)^2+(y-y_0)^2+(z-z_0)^2}}=\frac{x-x_0}r,\ppy r=\frac{y-y_0}r,\ppz=\frac{z-z_0}r$,
+
+$\therefore\BSOIInt S{\frac{\bm r\cdot\bm n}{r^3}\md S}+\BSOIInt{S_{1-}}{\frac{\bm r\cdot\bm n}{r^3}\md S}\\
+=\BSOIInt{S+S_{1}-}{\frac1{r^3}(x-x_0,y-y_0,z-z_0)\cdot\bm n\md S}\\
+=\varIIInt\Omega{[\varppx{(\frac{x-x_0}{r^3})}+\varppy{(\frac{y-y_0}{r^3})}+\varppz{(\frac{z-z_0}{r^3})}]}xyz\\
+=\varIIInt\Omega{[\frac{r^3-(x-x_0)3r^2\frac{x-x_0}r}{r^6}+\frac{r^3-(y-y_0)3r^2\frac{y-y_0}r}{r^6}+\frac{r^3-(z-z_0)3r^2\frac{z-z_0}r}{r^6}]}xyz\\
+=\varIIInt\Omega{[\frac{r^2-3(x-x_0)^2}{r^5}+\frac{r^2-3(y-y_0)^2}{r^5}+\frac{r^2-3(z-z_0)^2}{r^5}]}xyz\\
+=\varIIInt\Omega{[\frac{(y-y_0)^2+(z-z_0)^2-2(x-x_0)^2}{r^5}+\frac{(z-z_0)^2+(x-x_0)^2-2(y-y_0)^2}{r^5}+\frac{(x-x_0)^2+(y-y_0)^2-2(z-z_0)^2}{r^5}]}xyz\\
+=\varIIInt\Omega{0}xyz=0$,
+
+$\therefore I=\BSOIInt S{\frac{\bm r\cdot\bm n}{r^3}\md S}=-\BSOIInt{S_{1-}}{\frac{\bm r\cdot\bm n}{r^3}\md S}=\BSOIInt{S_1}{\frac{\bm r\cdot\bm n}{r^3}\md S}=\BSOIInt{S_1}{\frac{\bm r\cdot\bm n}{a^3}\md S}=\frac1{a^3}\BSOIInt{S_1}{\bm r\cdot\bm n\md S}\\
+=\frac1{a^3}\varIIInt{\Omega_1}{\bm\nabla\bm\cdot\bm r}xyz=\frac1{a^3}\varIIInt{\Omega_1}{[\varppx{(x-x_0)}+\ppy{(y-y_0)}+\ppz{(z-z_0)}]}xyz=\frac1{a^3}\varIIInt{\Omega_1}{3}xyz\\
+=\frac3{a^3}\frac43\pi a^3=4\pi$.
+\item设$\Omega\subset\mathbb R^3$为有界区域，其边界$\partial\Omega$为逐片光滑的闭曲面，$\bm n$是$\partial\Omega$的外单位法向量. 函数$u$和$v$在$\Omega$中有连续偏导数\footnote{这里应是二阶连续偏导数}. 求证：\\
+(1)$\BSOIInt{\partial\Omega}{\pp u{\bm n}\md S}=\IIInt\Omega{\Delta u}V$;\\
+(2)$\BSOIInt{\partial\Omega}{u\pp u{\bm n}\md S}=\IIInt\Omega{[(\pp ux)^2+(\pp uy)^2+(\pp uz)^2]}V+\IIInt\Omega{u\Delta u}V$;\\
+(3)$\BSOIInt{\partial\Omega}{(u\pp v{\bm n}-v\pp u{\bm n})\md S}=\IIInt\Omega{(u\Delta v-v\Delta u)}V$.
+
+证明：(1)$\because u,v\in C^2(\Omega)$,
+
+方法1：$\therefore\BSOIInt{\partial\Omega}{\pp u{\bm n}\md S}=\BSOIInt{\partial\Omega}{\text{grad}u\bm\cdot\bm n\md S}=\BSOIInt{\partial\Omega}{(\ppx u,\ppy u,\ppz u)\bm\cdot\bm n\md S}=\IIInt\Omega{(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2})}V\\
+=\IIInt\Omega{\Delta u}V$.
+
+方法2：$\therefore\BSOIInt{\partial\Omega}{\pp u{\bm n}\md S}=\BSOIInt{\partial\Omega}{\bm\nabla u\bm\cdot\bm n\md S}=\IIInt\Omega{\bm\nabla\bm\cdot\bm\nabla u}V=\IIInt\Omega{\Delta u}V$.
+
+(2)$\because u,v\in C^2(\Omega)$,
+
+方法1：$\therefore\BSOIInt{\partial\Omega}{u\pp u{\bm n}\md S}=\BSOIInt{\partial\Omega}{u\text{grad}u\bm\cdot\bm n\md S}=\BSOIInt{\partial\Omega}{(u\ppx u,u\ppy u,u\ppz u)\bm\cdot\bm n\md S}\\
+=\IIInt\Omega{[\varppx{(u\ppx u)}+\varppy{(u\ppy u)}+\varppz{(u\ppz u)}]}V=\IIInt\Omega{[(\ppx u)^2+u\frac{\partial^2u}{\partial x^2}+(\ppy u)^2+u\frac{\partial^2u}{\partial y^2}+(\ppz u)^2+u\frac{\partial^2u}{\partial z^2}]}V\\
+=\IIInt\Omega{[(\ppx u)^2+(\ppy u)^2+(\ppz u)^2]}V+\IIInt\Omega{[u\frac{\partial^2u}{\partial x^2}+u\frac{\partial^2u}{\partial y^2}+u\frac{\partial^2u}{\partial z^2}]}V\\
+=\IIInt\Omega{[(\pp ux)^2+(\pp uy)^2+(\pp uz)^2]}V+\IIInt\Omega{u\Delta u}V$.
+
+方法2：$\therefore\BSOIInt{\partial\Omega}{u\pp u{\bm n}\md S}=\BSOIInt{\partial\Omega}{u\bm\nabla u\bm\cdot\bm n\md S}=\IIInt\Omega{\bm\nabla\bm\cdot(u\bm\nabla u)}V\\
+=\IIInt\Omega{(\bm\nabla u\bm\cdot\bm\nabla u+u\bm\nabla\bm\cdot\bm\nabla u)}V=\IIInt\Omega{[(\pp ux)^2+(\pp uy)^2+(\pp uz)^2]}V+\IIInt\Omega{u\Delta u}V$.
+
+(3)$\BSOIInt{\partial\Omega}{(u\pp v{\bm n}-v\pp u{\bm n})\md S}=\BSOIInt{\partial\Omega}{(u\text{grad}v\bm\cdot\bm n-v\text{grad}u\bm\cdot\bm n)\md S}=\BSOIInt{\partial\Omega}{(u\text{grad}v-v\text{grad}u)\bm\cdot\bm n\md S}\\
+=\BSOIInt{\partial\Omega}{(u\ppx v-v\ppx u,u\ppy v-v\ppy u,u\ppz v-v\ppz u)\bm\cdot\bm n\md S}\\
+=\IIInt\Omega{[\varppx{(u\ppx v-v\ppx u)}+\varppy{(u\ppy v-v\ppy u)}+\varppz{(u\ppz v-v\ppz u)}]}V\\
+=\IIInt\Omega{[(\ppx u\ppx v+u\frac{\partial^2v}{\partial x^2}-\ppx v\ppx u-v\frac{\partial^2u}{\partial x^2})+(\ppy u\ppy v+u\frac{\partial^2v}{\partial y^2}-\ppy v\ppy u-v\frac{\partial^2u}{\partial y^2})\\
+\hspace{3cm}+(\ppz u\ppz v+u\frac{\partial^2v}{\partial z^2}-\ppz v\ppz u-v\frac{\partial^2u}{\partial z^2})]}V\\
+=\IIInt\Omega{[(u\frac{\partial^2v}{\partial x^2}-v\frac{\partial^2u}{\partial x^2})+(u\frac{\partial^2v}{\partial y^2}-v\frac{\partial^2u}{\partial y^2})+(u\frac{\partial^2v}{\partial z^2}-v\frac{\partial^2u}{\partial z^2})]}V\\
+=\IIInt\Omega{[u(\frac{\partial^2v}{\partial x^2}+\frac{\partial^2v}{\partial y^2}+\frac{\partial^2v}{\partial z^2})-v(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2})]}V\\
+=\IIInt\Omega{(u\Delta v-v\Delta u)}V$.
+
+方法2：$\therefore\BSOIInt{\partial\Omega}{(u\pp v{\bm n}-v\pp u{\bm n})\md S}=\BSOIInt{\partial\Omega}{(u\bm\nabla v\bm\cdot\bm n-v\bm\nabla u\bm\cdot\bm n)\md S}=\BSOIInt{\partial\Omega}{(u\bm\nabla v-v\bm\nabla u)\bm\cdot\bm n\md S}\\
+=\IIInt\Omega{\bm\nabla\bm\cdot(u\bm\nabla v-v\bm\nabla u)}V=\IIInt\Omega{(\bm\nabla u\bm\cdot\bm\nabla v+u\bm\nabla\bm\cdot\bm\nabla v-\bm\nabla v\bm\cdot\bm\nabla u-v\bm\nabla\bm\cdot\bm\nabla u)}V\\
+=\IIInt\Omega{(u\bm\nabla\bm\cdot\bm\nabla v-v\bm\nabla\bm\cdot\bm\nabla u)}V=\IIInt\Omega{(u\Delta v-v\Delta u)}V$.
+
+\item设$D$为平面区域，$u(x,y)$在$D$上有二阶连续偏导数. 求证下列命题等价：\\
+(1)$u(x,y)$在$D$上是调和函数，即$\Delta u=\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}=0$;\\
+(2)对于$D$内任意一条圆周$L$，如果$L$包围的区域完全属于$D$，则有$\BLOInt L{\pp u{\bm n}\md l}=0$.
+
+证明：$(1)\Rightarrow(2)$:
+
+$\because u(x,y)\in C^2(D)$,
+
+$\therefore$对于$D$内任意一条圆周$L$，如果$L$包围的区域$D_L$完全属于$D$，
+
+则$\BLOInt L{\pp u{\bm n}\md l}=\BLOInt L{\bm\nabla u\bm\cdot\bm n\md l}=\IInt{D_L}{\bm\nabla\bm\cdot\bm\nabla u}\sigma=\IInt{D_L}{\Delta u}\sigma=0$.
+
+$(2)\Rightarrow(1)$:
+
+方法1：$\forall(x,y)\in D$取$D$内包围$(x,y)$的圆周$L$，使得$L$包围的区域$D_L$完全属于$D$,
+
+则$\BLOInt L{\pp u{\bm n}\md l}=0$,
+
+$\because u(x,y)\in C^2(D)$,
+
+$\therefore\Delta u\in C(D)$, 且$\IInt{D_L}{\Delta u}\sigma=\IInt{D_L}{\bm\nabla\bm\cdot\bm\nabla u}\sigma=\BLOInt L{\bm\nabla u\bm\cdot\bm n\md l}=\BLOInt L{\pp u{\bm n}\md l}=0$,
+
+根据积分中值定理$\exists(\xi,\eta)\in D_L\subset D,s.t.\IInt{D_L}{\Delta u}\sigma=\Delta u(\xi,\eta)A(D_L)=0$, 其中$A(D_L)$为区域$D_L$的面积，
+
+$\therefore\lim\limits_{D_L\rightarrow(x,y)}\frac{\IInt{D_L}{\Delta u}\sigma}{A(D_L)}=\lim\limits_{(\xi,\eta)\rightarrow(x,y)}\Delta u(\xi,\eta)=\Delta u(x,y)=0$.
+
+方法2：反证. 若$\Delta u=\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}$在$D$上不等于零，则至少存在一点$M_0$使得
+\[(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2})\Big|_{M_0}\neq0.\]
+不妨设$(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2})\Big|_{M_0}>0$. 由连续性知，存在位于$D$内的、以$M_0$为中心的一个闭圆域$U$, 在$U$上处处有$(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2})>0$, 从而
+\[\varIInt U{(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2})}xy>0.\]
+用$\partial U$表示$U$的正向边界(这是$D$内的一个圆周)，于是由格林公式得到
+\[\BLOInt{\partial U}{\pp u{\bm n}\md l}=\varIInt U{(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2})}xy>0.\]
+
+这与假设矛盾.
+
+\item设$\Omega$为光滑曲面$S$围成的有界闭区域，$u$是$\Omega$上的调和函数$(\Delta u=\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2}\equiv0)$. 求证：
+\[\BSOIInt S{[\frac1r\pp u{\bm n}-u\pp{(\frac1r)}{\bm n}]\md S}=-\BSOIInt{S_\delta}{[\frac1r\pp u{\bm n}-u\pp{(\frac1r)}{\bm n}]\md S},\]
+其中$M_0(x_0,y_0,z_0)$是$\Omega$内一点，$S_\delta$是以$M_0(x_0,y_0,z_0)$为中心，$\delta$为半径的球面，且$S_\delta\subset\Omega;\ \bm r=(x-x_0)\bm i+(y-y_0)\bm j+(z-z_0)\bm k, r$是$\bm r$的长度；$\bm n$是$S$的外单位法向量、$S_\delta$的内单位法向量.
+
+证明：设$\Omega_1$为$S$内$S_\delta$外的区域，在$\Omega_1$上
+\[\frac1r\pp u{\bm n}-u\pp{(\frac1r)}{\bm n}=\frac1r\bm\nabla u\bm\cdot\bm n-u\bm\nabla(\frac1r)\bm\cdot\bm n=[\frac1r\bm\nabla u-u\bm\nabla(\frac1r)]\bm\cdot\bm n,\]
+$\therefore$根据高斯公式
+\[\begin{aligned}
+&\BSOIInt{S+S_\delta}{[\frac1r\bm\nabla u-u\bm\nabla(\frac1r)]\bm\cdot\bm n\md S}\\
+=&\IIInt{\Omega_1}{\bm\nabla\bm\cdot[\frac1r\bm\nabla u-u\bm\nabla(\frac1r)]}V\\
+=&\IIInt{\Omega_1}{[\bm\nabla(\frac1r)\bm\cdot\bm\nabla u+\frac1r\bm\nabla\bm\cdot\bm\nabla u-\bm\nabla u\bm\cdot\bm\nabla(\frac1r)-u\bm\nabla\bm\cdot\bm\nabla(\frac1r)]}V\\
+=&\IIInt{\Omega_1}{[\frac1r\bm\nabla\bm\cdot\bm\nabla u-u\bm\nabla\bm\cdot\bm\nabla(\frac1r)]}V\\
+=&\IIInt{\Omega_1}{[\frac1r\Delta u-u\Delta(\frac1r)]}V\\
+=&-\IIInt{\Omega_1}{u\Delta(\frac1r)}V,
+\end{aligned}\]
+$\because\varppx{(\frac1r)}=\frac{-\ppx r}{r^2}=\frac1{r^2}\frac{-2(x-x_0)}{2\sqrt{(x-x_0)^2+(y-y_0)^2+(z-z_0)^2}}=\frac{-(x-x_0)}{r^3},\\
+\varppy{(\frac1r)}=\frac{-(y-y_0)}{r^3},\ \varppz{(\frac1r)}=\frac{-(z-z_0)}{r^3}$,\\
+$\frac{\partial^2}{\partial x^2}(\frac1r)=\varppx{[\frac{-(x-x_0)}{r^3}]}=\frac{-r^3+(x-x_0)3r^2\ppx r}{r^6}=\varppx{[\frac{-(x-x_0)}{r^3}]}=\frac{-r^3+(x-x_0)3r^2\frac{2(x-x_0)}{2\sqrt{(x-x_0)^2+(y-y_0)^2+(z-z_0)^2}}}{r^6}\\
+=\varppx{[\frac{-(x-x_0)}{r^3}]}=\frac{-r^3+(x-x_0)3r^2\frac{(x-x_0)}r}{r^6}=\frac{-r^2+3(x-x_0)^2}{r^5}=\frac{2(x-x_0)^2-(y-y_0)^2-(z-z_0)^2}{r^5}$,\\
+$\frac{\partial^2}{\partial y^2}(\frac1r)=\frac{2(y-y_0)^2-(z-z_0)^2-(x-x_0)^2}{r^5},\ \frac{\partial^2}{\partial z^2}(\frac1r)=\frac{2(z-z_0)^2-(x-x_0)^2-(y-y_0)^2}{r^5}$,
+
+$\therefore\Delta(\frac1r)=\frac{\partial^2}{\partial x^2}(\frac1r)+\frac{\partial^2}{\partial y^2}(\frac1r)+\frac{\partial^2}{\partial z^2}(\frac1r)\\
+=\frac{2(x-x_0)^2-(y-y_0)^2-(z-z_0)^2}{r^5}+\frac{2(y-y_0)^2-(z-z_0)^2-(x-x_0)^2}{r^5}+\frac{2(z-z_0)^2-(x-x_0)^2-(y-y_0)^2}{r^5}=0$,
+
+$\therefore$
+\[\BSOIInt{S+S_\delta}{[\frac1r\bm\nabla u-u\bm\nabla(\frac1r)]\bm\cdot\bm n\md S}=-\IIInt{\Omega_1}{u\Delta(\frac1r)}V=0,\]
+$\therefore$
+\[\BSOIInt{S+S_\delta}{[\frac1r\pp u{\bm n}-u\pp{(\frac1r)}{\bm n}]\bm\cdot\bm n\md S}=0,\]
+$\therefore$
+\[\BSOIInt S{[\frac1r\pp u{\bm n}-u\pp{(\frac1r)}{\bm n}]\md S}=-\BSOIInt{S_\delta}{[\frac1r\pp u{\bm n}-u\pp{(\frac1r)}{\bm n}]\md S}.\]
+\item设$\Omega\subset\mathbb R^3$为有界区域，其边界$\partial\Omega$逐片光滑，$\bm n$是$S$的外单位法向量. $f$在$\Omega$内调和，在$\partial\Omega$上有连续的偏导数，并且在闭区域$\bar\Omega$上连续. 求证：\\
+(1)$\BSOIInt{\partial\Omega}\pp f{\bm n}\md S=0$;\\
+(2)$\BSOIInt{\partial\Omega}f\pp f{\bm n}\md S=\IIInt\Omega{\|\bm\nabla f\|^2}V$($\|\bm\nabla f\|$是向量$\bm\nabla f$的长度);\\
+(3)若当$(x,y,z)\in\partial\Omega$时，$f(x,y,z)\equiv0$, 求证在$\Omega$内$f(x,y,z)\equiv0$.
+
+证明：(1)$\because f$在$\Omega$内调和，即$\Delta f(x,y,z)=0,(x,y,z)\in\Omega$,
+
+$\therefore\BSOIInt{\partial\Omega}\pp f{\bm n}\md S=\BSOIInt{\partial\Omega}{\bm\nabla f\bm\cdot\bm n\md S}=\IIInt\Omega{\bm\nabla\bm\cdot\bm\nabla f}V=\IIInt\Omega{\Delta f}V=\IIInt\Omega0V=0$.
+
+(2)$\BSOIInt{\partial\Omega}f\pp f{\bm n}\md S=\BSOIInt{\partial\Omega}{f\bm\nabla f\bm\cdot\bm n\md S}=\IIInt\Omega{\bm\nabla\bm\cdot(f\bm\nabla f)}V=\IIInt\Omega{(\bm\nabla f\bm\cdot\bm\nabla f+f\bm\nabla\bm\cdot\bm\nabla f)}V\\
+=\IIInt\Omega{(\|\bm\nabla f\|^2+f\Delta f)}V=\IIInt\Omega{\|\bm\nabla f\|^2}V$.
+
+(3)$\because$当$(x,y,z)\in\partial\Omega$时，$f(x,y,z)\equiv0$,
+
+$\therefore\IIInt\Omega{\|\bm\nabla f\|^2}V=\BSOIInt{\partial\Omega}f\pp f{\bm n}\md S=\BSOIInt{\partial\Omega}0\md S=0$,
+
+$\because\|\bm\nabla f\|^2\geqslant0$,
+
+$\therefore\|\bm\nabla f\|^2=0,\ \bm\nabla f=\bm0$,
+
+$\therefore f(x,y,z)=Const,(x,y,z)\in\Omega$,
+
+$\because f$在闭区域$\bar\Omega$上连续,
+
+$\therefore f(x,y,z)=0,(x,y,z)\in\Omega$.
+\item设$M_0(x_0,y_0,z_0)$为空间一确定点，$S$是点$M_0$之外的一张逐片光滑曲面. 从点$M_0$出发作射线，假定每一条这样的射线与曲面最多相交于一点，则所有与曲面$S$相交的射线构成一个锥体$\Lambda$. 以点$M_0$为中心，以任意正数$a$为半径做球，并设该球面含于锥体$\Lambda$内部的部分面积为$S_a$. 定义曲面$S$关于点$M_0$的立体角为$\Omega_S=\frac{S_a}{a^2}$.\\
+(1)若$S$是以点$M_0$为中心，以任意正数$a$为半径的球面，求$\Omega_S$;\\
+(2)令$\bm v=\frac{\bm r}{r^3}$, 求证：$\Omega_S=\IInt S{\bm v\bm\cdot\bm n}S$. 其中$\bm r=\overrightarrow{M_0M},r=\|\bm r\|$.
+
+解：(1)$\Omega_S=\frac{S_a}{a^2}=\frac{4\pi a^2}{a^2}=4\pi$.
+
+(2)证明：记半径为$a$的球面含于锥体$\Lambda$内部的部分为$S_a$, 不妨设$S_a$包含在锥体$\Lambda$的由顶点$M_0$到曲面$S$之间的部分,设$S$和$S_a$与锥体$\Lambda$侧面围成的区域为$\Omega$, 锥体$\Lambda$的侧面在$S$和$S_a$之间的部分记为$S_1$, 易知在$S_1$上$\bm v\bm\cdot\bm n=0$, 其中$\bm n$为区域$\Omega$边界上的外向单位法向量，
+
+$\because\bm v=\frac{\bm r}{r^2}\in C^1(\Omega)$,
+
+$\therefore\BSIInt S{\bm v\bm\cdot\bm n\md S}+\BSIInt{S_a}{\bm v\bm\cdot\bm n\md S}=\BSIInt S{\bm v\bm\cdot\bm n\md S}+\BSIInt{S_a}{\bm v\bm\cdot\bm n\md S}+\BSIInt{S_1}{\bm v\bm\cdot\bm n\md S}\\
+=\BSOIInt{S+S_a+S_1}{\bm v\bm\cdot\bm n\md S}=\IIInt\Omega{\bm\nabla\bm\cdot\bm v}V=\IIInt\Omega{[\varppx{(\frac{x-x_0}{r^3})}+\varppy{(\frac{y-y_0}{r^3})}+\varppz{(\frac{z-z_0}{r^3})}]}V\\
+=\IIInt\Omega{[\frac{r^3-(x-x_0)3r^2\ppx r}{r^6}+\frac{r^3-(y-y_0)3r^2\ppy r}{r^6}+\frac{r^3-(z-z_0)3r^2\ppz r}{r^6}]}V\\
+=\IIInt\Omega{[\frac{r^3-(x-x_0)3r^2\frac{x-x_0}r}{r^6}+\frac{r^3-(y-y_0)3r^2\frac{y-y_0}r}{r^6}+\frac{r^3-(z-z_0)3r^2\frac{z-z_0}r}{r^6}]}V\\
+=\IIInt\Omega{[\frac{r^2-3(x-x_0)^2}{r^5}+\frac{r^2-3(y-y_0)^2}{r^5}+\frac{r^2-3(z-z_0)^2}{r^5}]}V\\
+=\IIInt\Omega{[\frac{(y-y_0)^2+(z-z_0)^2-2(x-x_0)^2}{r^5}+\frac{(z-z_0)^2+(x-x_0)^2-2(y-y_0)^2}{r^5}+\frac{(x-x_0)^2+(y-y_0)^2-2(z-z_0)^2}{r^5}]}V\\
+=\IIInt\Omega0V=0$,
+
+%$\text{div}(\frac{\bm r}{r^3})=\bm\nabla\bm\cdot(\frac{\bm r}{r^3})=\varppx{(\frac{x-x_0}{r^3})}+\varppy{(\frac{y-y_0}{r^3})}+\varppz{(\frac{z-z_0}{r^3})}\\
+%=\frac{r^3-(x-x_0)3r^2\ppx r}{r^6}+\frac{r^3-(y-y_0)3r^2\ppy r}{r^6}+\frac{r^3-(z-z_0)3r^2\ppz r}{r^6}\\
+%=\frac{r^3-(x-x_0)3r^2\frac{x-x_0}r}{r^6}+\frac{r^3-(y-y_0)3r^2\frac{y-y_0}r}{r^6}+\frac{r^3-(z-z_0)3r^2\frac{z-z_0}r}{r^6}\\
+%=\frac{r^2-3(x-x_0)^2}{r^5}+\frac{r^2-3(y-y_0)^2}{r^5}+\frac{r^2-3(z-z_0)^2}{r^5}\\
+%=\frac{(y-y_0)^2+(z-z_0)^2-2(x-x_0)^2}{r^5}+\frac{(z-z_0)^2+(x-x_0)^2-2(y-y_0)^2}{r^5}+\frac{(x-x_0)^2+(y-y_0)^2-2(z-z_0)^2}{r^5}\\
+%=0$,
+
+$\therefore\BSIInt S{\bm v\bm\cdot\bm n\md S}=-\BSIInt{S_a}{\bm v\bm\cdot\bm n\md S}=-\BSIInt{S_a}{\frac{\bm r}{r^3}\bm\cdot\bm n\md S}=-\BSIInt{S_a}{\frac{\bm r}{a^3}\bm\cdot\bm n\md S}=-\frac1{a^3}\BSIInt{S_a}{\bm r\bm\cdot\bm n\md S}$,
+
+$\because$球面$S_a$上$\bm n=-(\frac xa,\frac ya,\frac za)=-\frac1a\bm r$,
+
+$\therefore\BSIInt S{\bm v\bm\cdot\bm n\md S}=-\frac1{a^3}\BSIInt{S_a}{\bm r\bm\cdot\bm n\md S}=\frac1{a^3}\frac1a\BSIInt{S_a}{\bm r\bm\cdot\bm r\md S}=\frac1{a^3}\frac1a\BSIInt{S_a}{[(x-x_0)^2+(y-y_0)^2+(z-z_0)^2]\md S}\\
+=\frac1{a^3}\frac1a\BSIInt{S_a}{a^2\md S}=\frac1{a^2}\BSIInt{S_a}{\md S}=\frac{S_a}{a^2}=\Omega_S$.
+\end{enumerate}
+\end{document}
