@@ -1,0 +1,237 @@
+\documentclass[12pt,UTF8]{ctexart}
+\usepackage{ctex,amsmath,amssymb,geometry,fancyhdr,bm,amsfonts,mathtools,extarrows,graphicx,url,enumerate,xcolor,float,multicol,wasysym}
+\usepackage{subfigure}
+
+\allowdisplaybreaks[4]
+% 加入中文支持
+\newcommand\Set[2]{\left\{#1\ \middle\vert\ #2 \right\}}
+\newcommand\Lim[0]{\lim\limits_{n\rightarrow\infty}}
+\newcommand\LIM[2]{\lim\limits_{#1\rightarrow#2}}
+\newcommand\Ser[1]{\sum_{n=#1}^\infty}
+\newcommand{\SER}[2]{\sum_{#1=#2}^\infty}
+\newcommand{\Int}[4]{\varint\nolimits_{#1}^{#2}#3\mathrm d#4}
+\newcommand{\aIInt}[1]{\iint\limits_{#1}}
+\newcommand{\IInt}[3]{\iint\limits_{#1}#2\mathrm d#3}
+\newcommand{\varIInt}[4]{\iint\limits_{#1}#2\mathrm d#3\mathrm d#4}
+\newcommand{\IIInt}[3]{\iiint\limits_{#1}#2\mathrm d#3}
+\newcommand{\varIIInt}[5]{\iiint\limits_{#1}#2\mathrm d#3\mathrm d#4\mathrm d#5}
+\newcommand{\LInt}[3]{\varint\nolimits_{#1}#2\mathrm d#3}
+\newcommand{\LOInt}[3]{\varoint\nolimits_{#1}#2\mathrm d#3}
+\newcommand{\LLInt}[4]{\varint\nolimits_{#1}\nolimits^{#2}#3\mathrm d#4}
+\newcommand{\BLInt}[2]{\varint\nolimits_{#1}#2}
+\newcommand{\varBLInt}[3]{\varint\nolimits_{#1}\nolimits^{#2}#3}
+\newcommand{\BLOInt}[2]{\varoint\nolimits_{#1}#2}
+\newcommand{\SIInt}[3]{\iint\limits_{#1}#2\mathrm d#3}
+\newcommand{\md}[1]{\mathrm d#1}
+\newcommand{\BSIInt}[2]{\iint\limits_{#1}#2}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ppx}[1]{\frac{\partial #1}{\partial x}}
+\newcommand{\ppy}[1]{\frac{\partial #1}{\partial y}}
+\newcommand{\ppz}[1]{\frac{\partial #1}{\partial z}}
+\newcommand{\varppx}[1]{\frac{\partial}{\partial x} #1}
+\newcommand{\varppy}[1]{\frac{\partial}{\partial y} #1}
+\newcommand{\varppz}[1]{\frac{\partial}{\partial z} #1}
+\newcommand{\BSOIInt}[2]{\oiint\limits_{#1}#2}
+\newcommand{\me}[0]{\mathrm e}
+\newcommand{\m}[0]{\mathrm }
+\geometry{a4paper,scale=0.80}
+\pagestyle{fancy}
+\rhead{第14章补充题}
+\lhead{基础习题课讲义}
+\chead{微积分B(2)}
+\begin{document}
+\def\thesection{28C}
+\section{第14章补充题}
+\subsection{第14章补充题解答}
+\begin{enumerate}
+\item设$f(x)$在$[0,+\infty)$连续，且$\lim\limits_{x\rightarrow+\infty}f(x)=b$. 求证：\\
+(1)若$a>0$, 则方程$y'+ay=f(x)$的每个解$y(x)$都满足$\lim\limits_{x\rightarrow+\infty}y(x)=\frac ba$;\\
+(2)若$a<0$, 则方程$y'+ay=f(x)$只有一个解$y_0(x)$满足$\lim\limits_{x\rightarrow+\infty}y_0(x)=\frac ba$.
+
+证明：$y'+ay=f(x)$的解为
+\[y=\me^{-\varint_0^xa\md t}[\varint\nolimits_0^xf(t)\me^{\varint_0^ta\md u}\md t+C]=\me^{-ax}[\varint\nolimits_0^xf(t)\me^{at}\md x+C]\\
+=\frac{\varint\nolimits_0^xf(t)\me^{at}\md x+C}{\me^{ax}},\]
+(1)当$a>0$时
+\[\lim\limits_{x\rightarrow+\infty}y(x)=\lim\limits_{x\rightarrow+\infty}\frac{\varint\nolimits_0^xf(t)\me^{at}\md x+C}{\me^{ax}}=\lim\limits_{x\rightarrow+\infty}\frac{f(x)\me^{ax}}{a\me^{ax}}=\lim\limits_{x\rightarrow+\infty}\frac{f(x)}a=\frac ba.\]
+
+(2)当$a<0$时，$\lim\limits_{x\rightarrow+\infty}\me^{ax}=0$, 要使极限
+$\lim\limits_{x\rightarrow+\infty}y(x)=\lim\limits_{x\rightarrow+\infty}\frac{\varint\nolimits_0^xf(t)\me^{at}\md x+C}{\me^{ax}}$存在，则
+\[\lim\limits_{x\rightarrow+\infty}[\varint\nolimits_0^xf(t)\me^{at}\md x+C]=0,\]
+即$C=-\varint\nolimits_0^{+\infty}f(t)\me^{at}\md x$,
+
+此时
+\[\lim\limits_{x\rightarrow+\infty}y(x)=\lim\limits_{x\rightarrow+\infty}\frac{\varint\nolimits_0^xf(t)\me^{at}\md x+C}{\me^{ax}}=\lim\limits_{x\rightarrow+\infty}\frac{f(x)\me^{ax}}{a\me^{ax}}=\lim\limits_{x\rightarrow+\infty}\frac{f(x)}a=\frac ba.\]
+故只有一个解$y_0(x)=\me^{-ax}[\varint\nolimits_0^xf(t)\me^{at}\md x-\varint\nolimits_0^{+\infty}f(t)\me^{at}\md x]$满足$\lim\limits_{x\rightarrow+\infty}y_0(x)=\frac ba$.
+
+\item设$f(x)$连续.\\
+(1)求方程$y'+ay=f(x)$满足$y\big|_{x=0}=0$的解$y(x)(a>0)$;\\
+(2)若$|f(x)|\leqslant k$, 求证当$x\geqslant0$时，有$|y(x)|\leqslant\frac ka(1-\me^{-ax})$.
+
+解：(1)一阶线性非齐次微分方程$y'+ay=f(x)$的解为
+\[y=\me^{-\varint_0^xa\md t}[\varint\nolimits_0^xf(t)\me^{\varint_0^ta\md u}\md t+C]=\me^{-ax}[\varint\nolimits_0^xf(t)\me^{at}\md x+C]\\
+=\frac{\varint\nolimits_0^xf(t)\me^{at}\md x+C}{\me^{ax}},\]
+$\because y\big|_{x=0}=\frac C1=C=0$,
+
+$\therefore$满足$y\big|_{x=0}=0$的解$y(x)=\frac{\varint\nolimits_0^xf(t)\me^{at}\md x}{\me^{ax}}$.
+
+(2)$\because|f(x)|\leqslant k$,
+
+$\therefore$当$x\geqslant0$时
+
+$|y(x)|=\frac{|\varint\nolimits_0^xf(t)\me^{at}\md x|}{\me^{ax}}\leqslant\frac{\varint\nolimits_0^x|f(t)|\me^{at}\md t}{\me^{ax}}\leqslant\frac{\varint\nolimits_0^xk\me^{at}\md t}{\me^{ax}}=\frac{k\varint\nolimits_0^x\me^{at}\md t}{\me^{ax}}=\frac{\frac ka\me^{ax}\big|_0^x}{\me^{ax}}=\frac{\frac ka(\me^{ax}-1)}{\me^{ax}}=\frac ka(1-\me^{-ax})$.
+
+\item设$y_1(x),y_2(x)$是方程$y''+p(x)y'+q(x)y=0$的两个解，并且函数$f(x)=\frac{y_2(x)}{y_1(x)}$在某个点$x_0$处取得极值. 问$y_1(x)$和$y_2(x)$能否构成该方程的一个基本解组？
+
+解：$\because f(x)=\frac{y_2(x)}{y_1(x)}$在点$x_0$处取得极值,
+
+$\therefore f'(x_0)=\frac{y_2'(x_0)y_1(x_0)-y_1'(x_0)y_2(x_0)}{[y_1(x_0)]^2}=0$, 即$y_2'(x_0)y_1(x_0)-y_1'(x_0)y_2(x_0)=0$,
+
+$\therefore W[y_1,y_2](x_0)=\begin{vmatrix}y_1(x_0)&y_2(x_0)\\y_1'(x_0)&y_2'(x_0)\end{vmatrix}=y_2'(x_0)y_1(x_0)-y_1'(x_0)y_2(x_0)=0$,
+
+$\therefore y_1(x),y_2(x)$线性相关，故$y_1(x)$和$y_2(x)$不能构成该方程的一个基本解组.
+
+\item已知$f(x)$二阶连续可导，并且对于$xOy$平面上每一条逐段光滑的有向曲线$L$都有\[\BLOInt L{[f'(x)+6f(x)+4\me^{-x}]y\md x+f'(x)\md y}=0.\]
+试求$f(x)$.
+
+解：$\because f(x)\in C^2(\mathbb R)$,
+
+$\therefore[f'(x)+6f(x)+4\me^{-x}]y,f'(x)\in C^2(\mathbb R^2)$,
+
+$\because$对于$xOy$平面上每一条逐段光滑的有向曲线$L$都有\\
+$\BLOInt L{[f'(x)+6f(x)+4\me^{-x}]y\md x+f'(x)\md y}=0$,
+
+$\therefore\varppy{[f'(x)+6f(x)+4\me^{-x}]y}=f'(x)+6f(x)+4\me^{-x}=\varppx{f'(x)}=f''(x)$,
+
+即$f''(x)-f'(x)-6f(x)=4\me^{-x}$,
+
+该二阶常系数线性非齐次微分方程的齐次方程的特征方程为$\lambda^2-\lambda-6=(\lambda-3)(\lambda+2)=0$，特征根$\lambda_1=3,\lambda_2=-2$, 故齐次方程的通解为$y=C_1\me^{3x}+C_2\me^{-2x}$.
+
+非齐次方程的自由项$4\me^{-x}$中的$\lambda=-1$, 不是特征方程的解，故可设非齐次方程的特解为$y=a\me^{-x}$, 代入原非齐次方程得$a\me^{-x}+a\me^{-x}-6a\me^{-x}=-4a\me^{-x}=4\me^{-x}$,
+
+$\therefore a=-1$,
+
+$\therefore f(x)=C_1\me^{3x}+C_2\me^{-2x}-\me^{-x},C_1,C_2\in\mathbb R$.
+
+\item假定对于半空间$x>0$的任意光滑封闭曲面$S$，有
+\[\BSOIInt S{xf(x)\md y\wedge\md z-xyf(x)\md z\wedge\md x+\me^{2x}z\md x\wedge\md y}=0,\]
+其中$f(x)$在$(0,+\infty)$有连续导数，且满足$\lim\limits_{x\rightarrow0_+}f(x)=1$. 求$f(x)$.
+
+解：$\because f(x)\in C^1(0,+\infty)$,
+
+$\therefore xf(x),-xyf(x),\me^{2x}z\in C^1((0,+\infty)\times(-\infty,+\infty)\times(-\infty,+\infty))$,
+
+$\forall(x,y,z)\in(0,+\infty)\times(-\infty,+\infty)\times(-\infty,+\infty)$, 设$S$为包围该点的任意光滑封闭曲面，记$S$围成的区域为$\Omega$, 则
+\[\begin{aligned}
+&\BSOIInt S{xf(x)\md y\wedge\md z-xyf(x)\md z\wedge\md x+\me^{2x}z\md x\wedge\md y}\\
+=&\IIInt\Omega{\{\varppx{[xf(x)]}+\varppy{[-xyf(x)]}+\varppz{(\me^{2x}z)}\}}V\\
+=&\IIInt\Omega{[f(x)+xf'(x)-xf(x)+\me^{2x}]}V=0,
+\end{aligned}\]
+$\because f(x)+xf'(x)-xf(x)+\me^{2x}$连续，
+
+$\therefore$根据积分中值定理$\exists(\xi,\eta,\zeta)\in\Omega$, 使得\[\IIInt\Omega{[f(x)+xf'(x)-xf(x)+\me^{2x}]}V=[f(\xi)+\xi f'(\xi)-\xi f(\xi)+\me^{2\xi}]V(\Omega)=0,\]
+其中$V(\Omega)$表示区域$\Omega$的体积，
+
+$\therefore$
+\[\begin{aligned}
+f(x)+xf'(x)-xf(x)+\me^{2x}&=\lim\limits_{(\xi,\eta,\zeta)\rightarrow(x,y,z)}[f(\xi)+\xi f'(\xi)-\xi f(\xi)+\me^{2\xi}]\\
+&=\lim\limits_{\Omega\rightarrow(x,y,z)}\frac{\IIInt\Omega{[f(x)+xf'(x)-xf(x)+\me^{2x}]}V}{V(\Omega)}\\
+&=\lim\limits_{\Omega\rightarrow(x,y,z)}\frac0{V(\Omega)}\\
+&=0,(x,y,z)\in(0,+\infty)\times(-\infty,+\infty)\times(-\infty,+\infty),
+\end{aligned}\]
+$\therefore f'(x)+\frac{1-x}xf(x)=-\frac1x\me^{2x},x>0$,
+
+$\therefore f(x)=\me^{-\varint\frac{1-x}x\md x}[\varint(-\frac1x\me^{2x})\me^{\varint\frac{1-x}x\md x}\md x+C]=\me^{x-\ln x}[\varint(-\frac1x\me^{2x})\me^{\ln x-x}\md x+C]\\
+=\frac1x\me^x[\varint(-\frac1x\me^{2x})\frac x{\me^x}\md x+C]=\frac1x\me^x[\varint(-\me^x)\md x+C]=\frac1x(-\me^{-2x}+C\me^x)=\frac1x(C\me^x-\me^{2x})$,
+
+$\because\lim\limits_{x\rightarrow0_+}f(x)=\lim\limits_{x\rightarrow0_+}\frac{C\me^x-\me^{2x}}x=\lim\limits_{x\rightarrow0_+}\frac{C\me^x-2\me^{2x}}1=C-2=1$, 
+
+$\therefore C=3$,
+
+$\therefore f(x)=\frac{\me^x}x(3-\me^x)$.
+
+\item设$f(x)$有二阶连续导数，并满足方程$f(x)=\Int0x{f(1-t)}t+1$, 求$f(x)$.
+
+解：$\because f(x)=\Int0x{f(1-t)}t+1$,
+
+$\therefore f'(x)=f(1-x)$(*),
+
+$\therefore f'(1-x)=f(x)$, 
+
+$\therefore$(*)式两边求导得$f''(x)=-f'(1-x)=-f(x)$,
+
+即$f''(x)+f(x)=0$, 该齐次线性微分方程的特征方程$\lambda^2+1=0$的根为$\lambda_{1,2}=\pm\m i$, 通解为$f(x)=C_1\cos x+C_2\sin x$,
+
+$\because f(0)=1$, 由(*)式得$f'(0)=f(1)$,
+
+$\therefore C_1=1,C_2=C_1\cos1+C_2\sin 1$,
+
+$\therefore C_2=\frac{\cos1}{1-\sin1}$,
+
+$\therefore f(x)=\cos x+\frac{\cos1}{1-\sin1}\sin x$.
+
+\item求级数$x+\frac1{1\times3}x^3+\frac1{1\times3\times5}x^5+\cdots+\frac1{(2n+1)!!}x^{2n+1}+\cdots$的收敛域以及和函数.
+
+解：原级数可以记为$\sum_{n=1}^\infty\frac1{(2n+1)!!}x^{2n+1}=\sum_{n=1}^\infty a_n$,
+
+$\because\forall x\in\mathbb R,\lim\limits_{n\rightarrow\infty}\frac{|a_{n+1}|}{|a_n|}=\lim\limits_{n\rightarrow\infty}\frac{\frac1{(2n+3)!!}|x|^{2n+3}}{\frac1{(2n+1)!!}|x|^{2n+1}}=\lim\limits_{n\rightarrow\infty}\frac1{2n+3}|x|^2=0$,
+
+$\therefore$由比值判别法可知，$\sum_{n=1}^\infty a_n$对所有$x$都绝对收敛. 故收敛域为$(-\infty,+\infty)$.
+
+记和函数为$S(x)=\sum_{n=1}^\infty\frac1{(2n+1)!!}x^{2n+1}$, 则
+\[\begin{aligned}
+S'(x)&=[\sum_{n=1}^\infty\frac1{(2n+1)!!}x^{2n+1}]'=\sum_{n=1}^\infty[\frac1{(2n+1)!!}x^{2n+1}]'\\
+&=1+\sum_{n=1}^\infty\frac{x^{2n}}{(2n-1)!!}=1+x\sum_{n=0}^\infty\frac{x^{2n+1}}{(2n+1)!!}=1+xS(x),
+\end{aligned}\]
+即$S(x)$应满足一阶线性非齐次微分方程
+\[S'(x)-xS(x)=1,\]
+其通解为$S(x)=\me^{-\varint_0^x(-x)\md x}[\varint_0^x1\me^{\varint_0^t(-u)\md u}\md t+C]=\me^{\frac12x^2}[\varint_0^x\me^{-\frac12t^2}\md t+C]$,
+
+$\because S(0)=C=0$,
+
+$\therefore S(x)=\me^{\frac12x^2}\varint_0^x\me^{-\frac12t^2}\md t$.
+
+\item求方程$y''\cos x-2y'\sin x+3y\cos x=\me^x$的通解.
+
+解：令$u(x)=y\cos x$, 则$u'=y'\cos x-y\sin x,\ u''=y''\cos x-y'\sin x-y'\sin x-y\cos x=y''\cos x-2y'\sin x-y\cos x$,
+
+$\therefore u''+4u=\me^x$(*), 该非齐次线性微分方程对应的齐次方程的特征方程为$\lambda^2+4=0$, 特征根为$\lambda_{1,2}=\pm2\m i$，齐次方程的通解为$u=C_1\cos2x+C_2\sin2x$,
+
+非齐次方程(*)的自由项$\me^x$中的$\lambda=1$不是特征方程的根，故可设非齐次方程的特解为$u^*=a\me^x$，代入该非齐次方程得$a\me^x+4a\me^x=5a\me^x=\me^x,\ a=\frac15$,
+
+$\therefore$非齐次方程$(*)$的通解为$u=C_1\cos2x+C_2\sin2x+\frac15\me^x$,
+
+$\therefore$原方程的通解为$y=u\cos x=\cos x(C_1\cos2x+C_2\sin2x+\frac15\me^x)$.
+
+\item设$f(x)$是定解问题\[\begin{cases}
+y'=x^2+y^2,\\
+y(0)=0,
+\end{cases}\]的解. 试研究函数$f(x)$的增减性和凸凹性, 并求$\lim\limits_{x\rightarrow0}\frac{f(x)}{x^3}$.
+
+解：$\because f(x)$是定解问题$\begin{cases}
+y'=x^2+y^2,\\
+y(0)=0,
+\end{cases}$的解,
+
+$\therefore f'(x)=x^2+[f(x)]^2\geqslant0$, 且当$x\neq0$时$f'(x)>0$,
+
+$\therefore f(x)$在$(-\infty,+\infty)$上是单调增加的函数.
+
+$\because f(0)=0$,
+
+$\therefore$当$x>0$时$f(x)>0$，当$x<0$时$f(x)<0$,
+
+$\because f''(x)=2x+2f(x)f'(x)$,
+
+又$\because f'(x)>0,x\neq0$,
+
+$\therefore$当$x>0$时$f''(x)>0$，当$x<0$时$f''(x)<0$,
+
+$\therefore f(x)$在$(0,+\infty)$上是下凸函数，在$(-\infty,0)$上是上凸函数.
+
+\[\begin{aligned}
+\lim\limits_{x\rightarrow0}\frac{f(x)}{x^3}&=\lim\limits_{x\rightarrow0}\frac{f'(x)}{3x^2}=\lim\limits_{x\rightarrow0}\frac{f''(x)}{6x}=\lim\limits_{x\rightarrow0}\frac{f'''(x)}6\\
+&=\lim\limits_{x\rightarrow0}\frac{2+2[f'(x)]^2+2f(x)f''(x)}6\\
+&=\lim\limits_{x\rightarrow0}\frac{2+2\{x^2+[f(x)]^2\}^2+2f(x)f''(x)}6=\frac26=\frac13.
+\end{aligned}\]
+\end{enumerate}
+\end{document}
