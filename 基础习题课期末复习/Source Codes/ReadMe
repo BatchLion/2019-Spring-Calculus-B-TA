@@ -1,3 +1,4 @@
 这里的源代码是在基础习题课讲义的基础上加上复习计划表、知识结构图、重点知识的解析和习题分类等整合而成。  
 所有的文件用LaTeX编辑，图片主要用Mathematica+Microsoft Viso制作，知识结构图用思维导图工具Freeplane制作。
-可将Source Codes文件夹下载下来，保持文件夹的结构不变，直接编译各个文件夹中的tex文件。可用PDFLaTeX编译。
+可将Source Codes文件夹下载下来，保持文件夹的结构不变，直接编译各个文件夹中的tex文件。  
+可用PDFLaTeX编译。
