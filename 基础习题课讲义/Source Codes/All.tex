@@ -1,0 +1,77 @@
+\documentclass[12pt,UTF8,fleqn]{ctexart}
+\usepackage{docmute}
+\usepackage{ctex,amsmath,amssymb,geometry,fancyhdr,bm,amsfonts,mathtools,extarrows,graphicx,url,enumerate,xcolor,float,multicol,wasysym}
+\usepackage{subfigure}
+\allowdisplaybreaks[4]
+% 加入中文支持
+\newcommand\Set[2]{\left\{#1\ \middle\vert\ #2 \right\}}
+\newcommand\Lim[0]{\lim\limits_{n\rightarrow\infty}}
+\newcommand\LIM[2]{\lim\limits_{#1\rightarrow#2}}
+\newcommand\Ser[1]{\sum_{n=#1}^\infty}
+\newcommand{\SER}[2]{\sum_{#1=#2}^\infty}
+\newcommand{\Int}[4]{\varint\nolimits_{#1}^{#2}#3\mathrm d#4}
+\newcommand{\aIInt}[1]{\iint\limits_{#1}}
+\newcommand{\IInt}[3]{\iint\limits_{#1}#2\mathrm d#3}
+\newcommand{\varIInt}[4]{\iint\limits_{#1}#2\mathrm d#3\mathrm d#4}
+\newcommand{\IIInt}[3]{\iiint\limits_{#1}#2\mathrm d#3}
+\newcommand{\varIIInt}[5]{\iiint\limits_{#1}#2\mathrm d#3\mathrm d#4\mathrm d#5}
+\newcommand{\LInt}[3]{\varint\nolimits_{#1}#2\mathrm d#3}
+\newcommand{\LOInt}[3]{\varoint\nolimits_{#1}#2\mathrm d#3}
+\newcommand{\LLInt}[4]{\varint\nolimits_{#1}\nolimits^{#2}#3\mathrm d#4}
+\newcommand{\BLInt}[2]{\varint\nolimits_{#1}#2}
+\newcommand{\varBLInt}[3]{\varint\nolimits_{#1}\nolimits^{#2}#3}
+\newcommand{\BLOInt}[2]{\varoint\nolimits_{#1}#2}
+\newcommand{\SIInt}[3]{\iint\limits_{#1}#2\mathrm d#3}
+\newcommand{\md}[1]{\mathrm d#1}
+\newcommand{\BSIInt}[2]{\iint\limits_{#1}#2}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ppx}[1]{\frac{\partial #1}{\partial x}}
+\newcommand{\ppy}[1]{\frac{\partial #1}{\partial y}}
+\newcommand{\ppz}[1]{\frac{\partial #1}{\partial z}}
+\newcommand{\varppx}[1]{\frac{\partial}{\partial x} #1}
+\newcommand{\varppy}[1]{\frac{\partial}{\partial y} #1}
+\newcommand{\varppz}[1]{\frac{\partial}{\partial z} #1}
+\newcommand{\BSOIInt}[2]{\oiint\limits_{#1}#2}
+\newcommand{\me}[0]{\mathrm e}
+\newcommand{\m}[0]{\mathrm }
+\newcommand{\dd}[2]{\frac{\mathrm d #1}{\mathrm d #2}}
+\geometry{a4paper,scale=0.80}
+%\pagestyle{fancy}
+%\rhead{习题12.1\&12.2\&12.3}
+%\lhead{基础习题课讲义}
+%\chead{微积分B(2)}
+
+\pagestyle{fancy}             % 选用 fancy style
+% 其余同 plain style
+\fancyhf{}                    
+\fancyhead[L]{基础习题课讲义}
+\fancyhead[C]{\leftmark}
+\fancyhead[R]{微积分B(2)}
+\fancyfoot[C]{~\thepage~}
+\renewcommand{\headrulewidth}{0.7pt}
+\renewcommand{\footrulewidth}{0pt}
+\begin{document}
+\input{14/14.tex} 
+\input{15/15.tex} 
+\input{16/16.tex} 
+\input{17/17.tex}
+\input{18/18.tex}
+\input{19/19.tex} 
+\input{20/20.tex} 
+\input{21/21.tex} 
+\input{22/22.tex}
+\input{23/23.tex}
+\input{24/24.tex}
+\input{25/25.tex}
+\input{25CExtra/25CExtra.tex}
+\def\thesection{26}
+\input{26/26.tex}
+\def\thesection{27}
+\input{27/27.tex}
+\def\thesection{28}
+\input{28/28.tex}
+\def\thesection{28C}
+\input{28CExtra/28CExtra.tex}
+\def\thesection{29}
+\input{29/29.tex}
+\end{document}
